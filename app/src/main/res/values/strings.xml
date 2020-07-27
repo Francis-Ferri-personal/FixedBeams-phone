@@ -6,5 +6,6 @@
     <string name="editTextMail">Correo Electronico</string>
     <string name="editTextPassword">Contraseña</string>
     <string name="buttonRegistrarUser">REGISTRATE</string>
-    <string name="textViewFixedBeams">FixedBeams</string>
+    <string name="textViewFixedBeams">Fixed</string>
+    <string name="textViewBeams">Beams</string>
 </resources>
