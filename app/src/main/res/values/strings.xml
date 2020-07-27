@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FixedBeams-phone</string>
+    <string name="textViewIniciarSesion">"Iniciar sesión "</string>
+    <string name="textViewRegistrate">Registrate</string>
+    <string name="editTextNameUser">Nombre</string>
+    <string name="editTextMail">Correo Electronico</string>
+    <string name="editTextPassword">Contraseña</string>
+    <string name="buttonRegistrarUser">REGISTRATE</string>
+    <string name="textViewFixedBeams">FixedBeams</string>
 </resources>
