@@ -8,4 +8,6 @@
     <string name="buttonRegistrarUser">REGISTRATE</string>
     <string name="textViewFixedBeams">Fixed</string>
     <string name="textViewBeams">Beams</string>
+    <string name="textViewHerramientas">Herramientas</string>
+    <string name="buttonVerCarrito">Ver Carrito</string>
 </resources>
