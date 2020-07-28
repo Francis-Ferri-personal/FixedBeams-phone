@@ -21,6 +21,10 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="mageButton_helmet">A helmet</string>
     <string name="imageButton_brick">A brick</string>
     <string name="imageButton_drill">A drill</string>
+    <string name="imageProduct">A image from a product</string>
+    <string name="discounts_total">Discounts in this order:</string>
+    <string name="button_continue">Continue</string>
+    <string name="units_textview">Units:</string>
     <string name="textView_ItemNumber">0</string>
     <string name="textView_priceAccumulated">$ 0.00</string>
     <string name="button_viewCart">View cart</string>
