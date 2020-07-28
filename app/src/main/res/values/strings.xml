@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FixedBeams-phone</string>
+    <string name="app_title">FexedBeams</string>
+    <string name="logo_fixedBeams">A saw as the logo</string>
 </resources>
