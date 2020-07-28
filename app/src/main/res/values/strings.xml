@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">FixedBeams-phone</string>
+    <string name="tituloDetallesTextView">FixedBeams-phone</string>
+    <string name="categoriaDetallesTextView">FixedBeams-phone</string>
+    <string name="detallesDetallesTextView">FixedBeams-phone</string>
+    <string name="resumenDetallesTextView">"DW331K Características
+Potente motor de 6,5 Amps con velocidad variable que proporciona un corte rápido hasta 3,100 carreras por minuto
+Cuenta con velocidad variable que permite controlar los cortes por minuto, para trabajar en todo tipo de aplicaciones"</string>
+    <string-array name="opciones_entrega">
+        <item>A domicilio</item>
+        <item>Personalmente</item>
+    </string-array>
 </resources>
