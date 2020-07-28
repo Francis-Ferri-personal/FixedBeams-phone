@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!--ESTOS META DATAS SON PARA EL GOOGLE MAPS-->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -22,7 +24,6 @@
 
         <activity android:name=".DetallesActivity"></activity>
         <activity android:name=".PagosActivity" />
-        <activity android:name=".MainActivity">
         <activity android:name=".ShoppingCartActivity"></activity>
         <activity android:name=".ProductsActivity"></activity>
         <activity android:name=".LoadingActivity">
