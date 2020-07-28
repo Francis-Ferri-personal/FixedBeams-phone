@@ -15,4 +15,12 @@
     <string name="discounts_total">Discounts in this order:</string>
     <string name="button_continue">Continue</string>
     <string name="units_textview">Units:</string>
+    <string name="textView_ItemNumber">0</string>
+    <string name="textView_priceAccumulated">$ 0.00</string>
+    <string name="button_viewCart">View cart</string>
+    <string name="textView_productName">Product name</string>
+    <string name="textView_productDescription">Product description</string>
+    <string name="textView_productPrice">$ 0.00</string>
+    <string name="imageView_product">Product photo</string>
+    <string name="button_addProduct">Add product</string>
 </resources>
