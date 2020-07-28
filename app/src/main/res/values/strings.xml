@@ -11,4 +11,8 @@
     <string name="mageButton_helmet">A helmet</string>
     <string name="imageButton_brick">A brick</string>
     <string name="imageButton_drill">A drill</string>
+    <string name="imageProduct">A image from a product</string>
+    <string name="discounts_total">Discounts in this order:</string>
+    <string name="button_continue">Continue</string>
+    <string name="units_textview">Units:</string>
 </resources>
