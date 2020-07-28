@@ -30,6 +30,8 @@
                 android:layout_marginRight="30dp"
                 android:text="FERRETERIA (Michelena)"
                 android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintHorizontal_bias="0.494" />
 
             <com.google.android.gms.maps.MapView
