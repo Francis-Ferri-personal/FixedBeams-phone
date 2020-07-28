@@ -2,20 +2,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ferrifrancis.fixedbeams_phone">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".InicioActivity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        </activity>
-        <activity android:name=".CargandoActivity">
+        <!--ESTOS META DATAS SON PARA EL GOOGLE MAPS-->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-        </activity>
-        <activity android:name=".RegistroActivity">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBdFYl667hg8vmsnqQg8DCzddZ6sLKV3VE" />
+
+        <activity android:name=".DetallesActivity"></activity>
+        <activity android:name=".PagosActivity" />
+        <activity android:name=".ShoppingCartActivity"></activity>
+        <activity android:name=".ProductsActivity"></activity>
+        <activity android:name=".InicioActivity"></activity>
+        <activity android:name=".CargandoActivity"></activity>
+        <activity android:name=".RegistroActivity"></activity>
+        <activity android:name=".LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
