@@ -10,4 +10,6 @@
     <string name="textViewBeams">Beams</string>
     <string name="textViewHerramientas">Herramientas</string>
     <string name="buttonVerCarrito">Ver Carrito</string>
+    <string name="textViewUserName">User Name</string>
+    <string name="textViewLocation">Location</string>
 </resources>
