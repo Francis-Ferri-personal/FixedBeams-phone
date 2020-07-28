@@ -45,6 +45,7 @@
         android:text="@string/user_name"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -52,7 +53,6 @@
         android:id="@+id/textView_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/location"
         app:layout_constraintStart_toStartOf="@+id/textView_userName"
         app:layout_constraintTop_toBottomOf="@+id/textView_userName" />
@@ -61,6 +61,8 @@
         android:id="@+id/tableLayout"
         android:layout_width="402dp"
         android:layout_height="92dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:stretchColumns="*"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +76,7 @@
                 android:id="@+id/imageButton_drill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#FECB67"
                 android:contentDescription="@string/imageButton_drill"
                 app:srcCompat="@drawable/ic_drill" />
 
@@ -81,6 +84,7 @@
                 android:id="@+id/imageButton_brick"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:backgroundTint="#FFFFFF"
                 android:contentDescription="@string/imageButton_brick"
                 app:srcCompat="@drawable/ic_brick" />
 
@@ -88,6 +92,7 @@
                 android:id="@+id/imageButton_helmet"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:backgroundTint="#FFFFFF"
                 android:contentDescription="@string/mageButton_helmet"
                 app:srcCompat="@drawable/ic_helmet" />
 
@@ -95,38 +100,56 @@
                 android:id="@+id/imageButton_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:backgroundTint="#FFFFFF"
                 android:contentDescription="@string/imageButton_menu"
                 app:srcCompat="@drawable/ic_menu" />
 
         </TableRow>
     </TableLayout>
 
-    <ScrollView
-        android:layout_width="366dp"
-        android:layout_height="408dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <Button
-        android:id="@+id/button"
-        android:layout_width="321dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:id="@+id/button_viewCart"
+        android:layout_width="213dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:backgroundTint="#FECB67"
+        android:text="@string/button_viewCart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_ItemNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/textView_ItemNumber"
+        app:layout_constraintBottom_toBottomOf="@+id/button_viewCart"
+        app:layout_constraintEnd_toStartOf="@+id/button_viewCart"
+        app:layout_constraintTop_toTopOf="@+id/button_viewCart" />
+
+    <TextView
+        android:id="@+id/textView_priceAccumulated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/textView_priceAccumulated"
+        app:layout_constraintBottom_toBottomOf="@+id/button_viewCart"
+        app:layout_constraintStart_toEndOf="@+id/button_viewCart"
+        app:layout_constraintTop_toTopOf="@+id/button_viewCart" />
+
+    <ListView
+        android:id="@+id/listView_products"
+        android:layout_width="402dp"
+        android:layout_height="422dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_viewCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
