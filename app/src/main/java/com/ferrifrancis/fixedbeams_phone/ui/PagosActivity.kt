@@ -1,8 +1,9 @@
-package com.ferrifrancis.fixedbeams_phone
+package com.ferrifrancis.fixedbeams_phone.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.ferrifrancis.fixedbeams_phone.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer

@@ -22,7 +22,7 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="imageButton_brick">A brick</string>
     <string name="imageButton_drill">A drill</string>
     <string name="imageProduct">A image from a product</string>
-    <string name="discounts_total">Discounts in this order:</string>
+    <string name="discounts_total">Discounts in this order: $0.00</string>
     <string name="button_continue">Continue</string>
     <string name="units_textview">Units:</string>
     <string name="textView_ItemNumber">0</string>
@@ -34,7 +34,7 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="imageView_product">Product photo</string>
     <string name="button_addProduct">Add product</string>
     <string name="textViewIniciarSesion">"Iniciar sesión "</string>
-    <string name="textViewRegistrate">Registrate</string>
+    <string name="textViewRegistrate">Regístrate</string>
     <string name="editTextNameUser">Nombre</string>
     <string name="editTextMail">Correo Electronico</string>
     <string name="editTextPassword">Contraseña</string>
@@ -45,4 +45,6 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="buttonVerCarrito">Ver Carrito</string>
     <string name="textViewUserName">User Name</string>
     <string name="textViewLocation">Location</string>
+    <string name="button_signIn">INICIAR SESIÓN</string>
+    <string name="editText_usernameEmail">Nombre o correo electrónico</string>
 </resources>

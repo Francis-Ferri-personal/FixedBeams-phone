@@ -1,8 +1,9 @@
-package com.ferrifrancis.fixedbeams_phone
+package com.ferrifrancis.fixedbeams_phone.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ferrifrancis.fixedbeams_phone.R
 import kotlinx.android.synthetic.main.activity_registro.*
 
 class RegistroActivity : AppCompatActivity() {
@@ -10,11 +11,12 @@ class RegistroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
         buttonRegistrarUser.setOnClickListener {
-            irInicio()
+            goToInicioActivity()
         }
     }
-    fun irInicio(){
-        val intentExplicito = Intent(this,InicioActivity::class.java)
+    fun goToInicioActivity(){
+        val intentExplicito = Intent(this,
+            SignInActivity::class.java)
         startActivity(intentExplicito)
 
     }

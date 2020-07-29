@@ -22,21 +22,21 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBdFYl667hg8vmsnqQg8DCzddZ6sLKV3VE" />
 
-        <activity android:name=".DetallesActivity"></activity>
-        <activity android:name=".PagosActivity" />
-        <activity android:name=".ShoppingCartActivity"></activity>
-        <activity android:name=".ProductsActivity"></activity>
-        <activity android:name=".InicioActivity"></activity>
-        <activity android:name=".CargandoActivity"></activity>
-        <activity android:name=".RegistroActivity"></activity>
-        <activity android:name=".LoadingActivity">
+        <activity android:name=".ui.CargandoActivity"/>
+        <activity android:name=".ui.CategoriesActivity"/>
+        <activity android:name=".ui.DetallesActivity"/>
+        <activity android:name=".ui.PagosActivity"/>
+        <activity android:name=".ui.ProductsActivity"/>
+        <activity android:name=".ui.RegistroActivity"/>
+        <activity android:name=".ui.ShoppingCartActivity"/>
+        <activity android:name=".ui.SignInActivity"/>
+        <activity android:name=".ui.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
