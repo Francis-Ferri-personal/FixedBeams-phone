@@ -19,6 +19,9 @@ class ProductsActivity : AppCompatActivity() {
         button_viewCart.setOnClickListener {
             goToShoppingCartActivity()
         }
+        imageButton_cart.setOnClickListener {
+            goToShoppingCartActivity()
+        }
     }
     fun obtainProducts(){
         products.add(
