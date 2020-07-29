@@ -29,6 +29,7 @@
                 android:contentDescription="@string/imageProduct"
                 android:padding="0dp"
                 android:scaleType="fitXY"
+                app:srcCompat="@drawable/saw"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -68,14 +69,12 @@
             android:layout_height="match_parent"
             android:layout_weight="0.25">
 
-            <Button
+            <ImageButton
                 android:id="@+id/plus_button"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:text="+"
-                android:textColor="#000"
-                android:textSize="10dp"
+                android:src="@drawable/ic_baseline_add_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView_quantity"
@@ -95,14 +94,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.509" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/minus_button"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:gravity="center"
-                android:text="-"
-                android:textColor="#000"
-                android:textSize="10dp"
+                android:src="@drawable/ic_baseline_remove_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -110,8 +106,8 @@
 
             <TextView
                 android:id="@+id/textView_units"
-                android:layout_width="96dp"
-                android:layout_height="29dp"
+                android:layout_width="91dp"
+                android:layout_height="28dp"
                 android:text="@string/units_textview"
                 android:textColor="#000"
                 android:textSize="15dp"
