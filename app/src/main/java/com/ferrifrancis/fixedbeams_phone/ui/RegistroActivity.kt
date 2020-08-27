@@ -18,7 +18,6 @@ class RegistroActivity : AppCompatActivity() {
         val intentExplicito = Intent(this,
             SignInActivity::class.java)
         startActivity(intentExplicito)
-
     }
 
 }

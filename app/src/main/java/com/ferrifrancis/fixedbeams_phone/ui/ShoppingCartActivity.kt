@@ -1,12 +1,14 @@
 package com.ferrifrancis.fixedbeams_phone.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.data.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.ui.adapter.CartProductAdapter
 import com.ferrifrancis.fixedbeams_phone.ui.adapter.ProductAdapter
+import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import kotlinx.android.synthetic.main.activity_products.*
 import kotlinx.android.synthetic.main.activity_shopping_cart.*
 
@@ -21,7 +23,7 @@ class ShoppingCartActivity : AppCompatActivity() {
         }
     }
     fun obtainProducts(){
-        products.add(
+        /*products.add(
             ProductModelClass(
                 1,
                 "Producto 1",
@@ -36,7 +38,8 @@ class ShoppingCartActivity : AppCompatActivity() {
                 "Detalle 2",
                 20.00
             )
-        )
+        )*/
+        products = SharedPreferencesManager.readSavedProducts(this)
 
         listView_cart_products.adapter =
             CartProductAdapter(

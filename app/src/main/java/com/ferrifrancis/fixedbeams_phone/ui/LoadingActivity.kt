@@ -1,5 +1,6 @@
 package com.ferrifrancis.fixedbeams_phone.ui
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.Toast
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.util.ConnectionType
 import com.ferrifrancis.fixedbeams_phone.util.NetworkMonitorUtil
+import java.io.FileOutputStream
 
 class LoadingActivity : AppCompatActivity() {
     //Based on: https://devdeeds.com/android-create-splash-screen-kotlin/
@@ -28,7 +30,6 @@ class LoadingActivity : AppCompatActivity() {
             finish()
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
