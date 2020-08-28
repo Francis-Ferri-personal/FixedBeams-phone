@@ -11,6 +11,8 @@ class CategoriesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
+        val userData = intent.getStringExtra("UserData")
+        textViewUserName.text = userData
         imageViewCart.setOnClickListener {
             goToShoppingCartActivity()
         }

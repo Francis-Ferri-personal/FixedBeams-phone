@@ -3,6 +3,7 @@
 package com.ferrifrancis.fixedbeams_phone.util
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
@@ -29,7 +30,7 @@ class SharedPreferencesManager{
             )
         }
 
-        fun writeDataToEncryptedPrefFile(login: String, password: String, context: Context){
+        fun writeUserDataToEncryptedPrefFile(login: String, password: String, context: Context){
             initPrefFile(context)
             sharedPreferences.edit()
                 .putString(LOGIN_KEY, login)
@@ -37,7 +38,7 @@ class SharedPreferencesManager{
                 .apply()
         }
 
-        fun readDataFromEncryptedPrefFile(context: Context): Array<String> {
+        fun readUserDataFromEncryptedPrefFile(context: Context): Array<String> {
             initPrefFile(context)
             return arrayOf<String>(sharedPreferences.getString(LOGIN_KEY, "")!!,
                 sharedPreferences.getString(PASSWORD_KEY, "")!!
