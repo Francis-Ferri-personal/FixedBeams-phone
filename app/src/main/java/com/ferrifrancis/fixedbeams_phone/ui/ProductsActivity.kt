@@ -3,9 +3,12 @@ package com.ferrifrancis.fixedbeams_phone.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.ui.adapter.ProductAdapter
 import com.ferrifrancis.fixedbeams_phone.data.ProductModelClass
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_products.*
 
 class ProductsActivity : AppCompatActivity() {
@@ -14,7 +17,6 @@ class ProductsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_products)
-        // Productos Quemados TODO: Reemplazar con productos de Base de datos
         obtainProducts()
         button_viewCart.setOnClickListener {
             goToShoppingCartActivity()
@@ -24,44 +26,29 @@ class ProductsActivity : AppCompatActivity() {
         }
     }
     fun obtainProducts(){
-        products.add(
-            ProductModelClass(
-                1,
-                "Producto 1",
-                "Detalle 1",
-                20.00
-            )
-        )
-        products.add(
-            ProductModelClass(
-                2,
-                "Producto 2",
-                "Detalle 2",
-                20.00
-            )
-        )
-        products.add(
-            ProductModelClass(
-                3,
-                "Producto 3",
-                "Detalle 3",
-                20.00
-            )
-        )
-        products.add(
-            ProductModelClass(
-                4,
-                "Producto 4",
-                "Detalle 4",
-                20.00
-            )
-        )
+        val db = FirebaseFirestore.getInstance()
+        db.collection("products")
+            .get()
+            .addOnCompleteListener{
+                if(it.isSuccessful){
+                    for (document in it.getResult()!!) {
+                        products.add(
+                            ProductModelClass(document.id,document["name"] as String, document["description"] as String, document["price"] as Long, 1,document["imageURL"] as String, document["manufacturer"] as String,
+                                document["categories"] as ArrayList<String>
+                            )
+                        )
+                    }
 
-        listView_products.adapter =
-            ProductAdapter(
-                this,
-                products
-            )
+                    listView_products.adapter =
+                        ProductAdapter(
+                            this,
+                            products
+                        )
+                } else{
+                    Log.w("TAG", "ERROR")
+                    Toast.makeText(this, "Error al leer la base de datos", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
     fun goToShoppingCartActivity(){
         val intentExplicito = Intent(this,

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "845771951288",
+    "firebase_url": "https://fixedbeams-phone-8dbac.firebaseio.com",
+    "project_id": "fixedbeams-phone-8dbac",
+    "storage_bucket": "fixedbeams-phone-8dbac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845771951288:android:da6132de293e1f5119f84d",
+        "android_client_info": {
+          "package_name": "com.ferrifrancis.fixedbeams_phone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845771951288-r29t2ujfqv6l2fur455a9k6gqv033aou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNucohdmppCMIzDmLdNnDme7Uf7FY9DIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845771951288-r29t2ujfqv6l2fur455a9k6gqv033aou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
