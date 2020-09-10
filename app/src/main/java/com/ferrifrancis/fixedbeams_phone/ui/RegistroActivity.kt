@@ -18,7 +18,10 @@ class RegistroActivity : AppCompatActivity() {
         val intentExplicito = Intent(this,
             SignInActivity::class.java)
         startActivity(intentExplicito)
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 38fdf7d... Registro Y login
     }
 
 }
