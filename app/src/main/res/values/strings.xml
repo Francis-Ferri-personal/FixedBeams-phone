@@ -38,6 +38,7 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="editTextNameUser">Nombre</string>
     <string name="editTextMail">Correo Electronico</string>
     <string name="editTextPassword">Contraseña</string>
+    <string name="editTextPasswordConfirm">Confirmar Contraseña</string>
     <string name="buttonRegistrarUser">REGISTRATE</string>
     <string name="textViewFixedBeams">Fixed</string>
     <string name="textViewBeams">Beams</string>
@@ -47,4 +48,5 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="textViewLocation">Location</string>
     <string name="button_signIn">INICIAR SESIÓN</string>
     <string name="editText_usernameEmail">Nombre o correo electrónico</string>
+    <string name="checkBoxRecordarme">RECORDARME</string>
 </resources>
