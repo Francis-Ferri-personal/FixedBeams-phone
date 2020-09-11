@@ -49,4 +49,5 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="button_signIn">INICIAR SESIÓN</string>
     <string name="editText_usernameEmail">Nombre o correo electrónico</string>
     <string name="checkBoxRecordarme">RECORDARME</string>
+    <string name="tvDescripcionCategorie">Descripcion de la categoria</string>
 </resources>
