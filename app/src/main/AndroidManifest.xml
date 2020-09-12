@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ferrifrancis.fixedbeams_phone">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -12,24 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ui.MainActivity"></activity>
 
-        <!--ESTOS META DATAS SON PARA EL GOOGLE MAPS-->
+        <!-- ESTOS META DATAS SON PARA EL GOOGLE MAPS -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBdFYl667hg8vmsnqQg8DCzddZ6sLKV3VE" />
 
-        <activity android:name=".ui.CargandoActivity"/>
-        <activity android:name=".ui.CategoriesActivity"/>
-        <activity android:name=".ui.DetallesActivity"/>
-        <activity android:name=".ui.PagosActivity"/>
-        <activity android:name=".ui.ProductsActivity"/>
-        <activity android:name=".ui.RegistroActivity"/>
-        <activity android:name=".ui.ShoppingCartActivity"/>
-        <activity android:name=".ui.SignInActivity"/>
+        <activity android:name=".ui.CategoriesActivity" />
+        <activity android:name=".ui.DetallesActivity" />
+        <activity android:name=".ui.PagosActivity" />
+        <activity android:name=".ui.ProductsActivity" />
+        <activity android:name=".ui.RegistroActivity" />
+        <activity android:name=".ui.ShoppingCartActivity" />
+        <activity android:name=".ui.SignInActivity" />
         <activity android:name=".ui.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -71,13 +71,13 @@
         android:layout_marginBottom="10dp"
         android:text="@string/resumenDetallesTextView"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/boton_prueba"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detallesTextView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/boton_prueba"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

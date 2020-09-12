@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProductsActivity">
+    tools:context=".ui.MainActivity">
 
     <ImageButton
         android:id="@+id/imageButton_cart"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@null"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/button_cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@null"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/button_search"
         app:layout_constraintEnd_toStartOf="@+id/imageButton_cart"
         app:layout_constraintTop_toTopOf="parent"
@@ -62,6 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_userName" />
 
     <TableRow
+        android:id="@+id/tableRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -75,7 +76,7 @@
             android:id="@+id/imageButton_tools"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FECB67"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:contentDescription="@string/imageButton_tools"
             app:srcCompat="@drawable/ic_drill" />
 
@@ -146,14 +147,19 @@
         app:layout_constraintStart_toEndOf="@+id/button_viewCart"
         app:layout_constraintTop_toTopOf="@+id/button_viewCart" />
 
-    <ListView
-        android:id="@+id/listView_products"
-        android:layout_width="402dp"
-        android:layout_height="422dp"
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="350dp"
+        android:layout_height="467dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button_viewCart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

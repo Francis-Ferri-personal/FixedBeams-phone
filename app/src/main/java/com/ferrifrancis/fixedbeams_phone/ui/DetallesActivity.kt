@@ -2,10 +2,8 @@ package com.ferrifrancis.fixedbeams_phone.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.ferrifrancis.fixedbeams_phone.R
 import kotlinx.android.synthetic.main.activity_detalles.*
-import kotlinx.android.synthetic.main.layout_shopping_cart_list_item.view.*
 
 class DetallesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +21,7 @@ class DetallesActivity : AppCompatActivity() {
             tempCounter -= 1
             textView6.text = tempCounter.toString()
         }
-        button.setOnClickListener {
+        boton_prueba.setOnClickListener {
             finish()
         }
     }

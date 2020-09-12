@@ -15,9 +15,9 @@ class RegistroActivity : AppCompatActivity() {
         }
     }
     fun goToInicioActivity(){
-        val intentExplicito = Intent(this,
-            SignInActivity::class.java)
-        startActivity(intentExplicito)
+        val explicitIntent = Intent(this,
+            MainActivity::class.java)
+        startActivity(explicitIntent)
 
     }
 
