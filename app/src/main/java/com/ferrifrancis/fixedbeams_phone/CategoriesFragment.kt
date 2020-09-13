@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.fragment_categories.view.*
 
 private const val ID_DOMAIN = "idDomain"
@@ -21,8 +22,12 @@ class CategoriesFragment : Fragment() {
         arguments?.let {
             idDomain = it.getInt(ID_DOMAIN)
         }
-        if(idDomain != null){
-            // TODO: Traer las categorias
+        if (Network.networkExists(context as AppCompatActivity)){
+            if(idDomain != null){
+                // TODO: Traer las categorias
+            }
+        } else {
+            Toast.makeText(context, "No internet conection", Toast.LENGTH_SHORT).show()
         }
     }
 
