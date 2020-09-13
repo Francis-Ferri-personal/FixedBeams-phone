@@ -12,9 +12,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.ferrifrancis.fixedbeams_phone.CategoriesFragment
 import com.ferrifrancis.fixedbeams_phone.R
+import com.ferrifrancis.fixedbeams_phone.dialogs.SearchDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
+class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, SearchDialog.SearchDialogListener {
     val fragmentManager: FragmentManager = supportFragmentManager
     lateinit var buttonActualMenu: ImageButton;
     var idDomain: Int = 4
@@ -35,14 +36,13 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
 
         // Inicializar el boton de busqueda
         imageButton_search.setOnClickListener {
-            // TODO
+            openSearchDialog()
         }
 
         // Inicializarr el boton de cerrar sesion
         imageButton_user.setOnClickListener {
             createDialogCloseSession()
         }
-
 
 
         // Inicializar los click listeners Menu
@@ -111,6 +111,11 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
 
      */
 
+    override fun getProductName(productName: String) {
+        super.getProductName(productName)
+        Toast.makeText(this, productName, Toast.LENGTH_LONG).show()
+        // TODO: Send to PProduct Activity
+    }
     fun goToShoppingCartActivity(){
         val explicitIntent = Intent(this,
             ShoppingCartActivity::class.java)
@@ -123,7 +128,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
         dialogBuilder.setMessage("Are you sure to close your session ${textView_userName.text}?")
         dialogBuilder.setIcon(R.drawable.ic_userlogin)
         dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, which ->
-            // TODO: Delete data of the user
+            closeUserSession()
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         })
@@ -131,5 +136,14 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
             //pass
         })
         dialogBuilder.create().show()
+    }
+
+    private fun openSearchDialog(){
+        val searchDialog = SearchDialog()
+        searchDialog.show(supportFragmentManager, "Search Dialog")
+    }
+
+    private fun closeUserSession(){
+        // TODO: Delete user Data fron SharedPreferences
     }
 }
