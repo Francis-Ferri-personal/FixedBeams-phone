@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
     val fragmentManager: FragmentManager = supportFragmentManager
     lateinit var buttonActualMenu: ImageButton;
-    var idDomain: Int = 5
+    var idDomain: Int = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
         buttonActualMenu = imageButton_tools
         loadCategories()
         // Cargar el fragento incial
-        createCategoryFragment(idDomain,false)
+        createCategoryFragment(idDomain,true)
 
         // Inicializar clic listeners shopping cart
         imageButton_cart.setOnClickListener { goToShoppingCartActivity() }
@@ -51,11 +51,11 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
 
     fun loadCategories(){
         when (buttonActualMenu) {
-            imageButton_tools -> idDomain = 4
+            imageButton_tools -> idDomain = 5
             imageButton_material -> idDomain = 3
             imageButton_equipment -> idDomain = 2
             imageButton_vehicles -> idDomain = 1
-            imageButton_teams -> idDomain = 5
+            imageButton_teams -> idDomain = 4
         }
         createCategoryFragment(idDomain, true)
     }

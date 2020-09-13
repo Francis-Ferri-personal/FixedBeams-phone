@@ -13,8 +13,11 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.ferrifrancis.fixedbeams_phone.adapters.CategoryAdapter
 import com.ferrifrancis.fixedbeams_phone.data.category.CategoriesListClass
+import com.ferrifrancis.fixedbeams_phone.data.category.CategoryModelClass
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_categories.*
 import kotlinx.android.synthetic.main.fragment_categories.view.*
 
 private const val ID_DOMAIN = "idDomain"
@@ -23,6 +26,7 @@ class CategoriesFragment : Fragment() {
 
     private var  idDomain: Int = -1
     lateinit var listener: CategoryListener
+    var categories = arrayListOf<CategoryModelClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +49,10 @@ class CategoriesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view: View =  inflater.inflate(R.layout.fragment_categories, container, false)
-        view.boton_prueba.setOnClickListener {
-            Toast.makeText(context, idDomain.toString(), Toast.LENGTH_LONG).show()
-            listener.getCategorySelected(idDomain)
+        view.gridView.setOnItemClickListener { parent, view, position, id ->
+            Toast.makeText(context,categories[position].id.toString(), Toast.LENGTH_LONG).show()
+            // TODO: Funcionalidad
         }
-        // TODO: Funcionalidad
         return view
     }
 
@@ -83,11 +86,10 @@ class CategoriesFragment : Fragment() {
             response ->
             try {
                 val gson = Gson()
-                val categories: String = "{\"categories\": ${response}}"
-                val res = gson.fromJson(categories, CategoriesListClass::class.java)
-                // res.categories[0].name
-                Toast.makeText(context, res.categories[0].name, Toast.LENGTH_LONG).show()
-                // TODO: Show categories and images
+                val categoriesJSON = "{\"categories\": ${response}}"
+                val res = gson.fromJson(categoriesJSON, CategoriesListClass::class.java)
+                categories = res.categories
+                gridView.adapter = CategoryAdapter(this, categories)
             } catch (e: Exception){
                 Log.d("Error", e.toString())
             }
