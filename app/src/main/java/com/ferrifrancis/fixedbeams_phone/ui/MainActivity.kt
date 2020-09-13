@@ -1,5 +1,7 @@
 package com.ferrifrancis.fixedbeams_phone.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
@@ -30,6 +32,18 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
         // Inicializar clic listeners shopping cart
         imageButton_cart.setOnClickListener { goToShoppingCartActivity() }
         button_viewCart.setOnClickListener { goToShoppingCartActivity() }
+
+        // Inicializar el boton de busqueda
+        imageButton_search.setOnClickListener {
+            // TODO
+        }
+
+        // Inicializarr el boton de cerrar sesion
+        imageButton_user.setOnClickListener {
+            createDialogCloseSession()
+        }
+
+
 
         // Inicializar los click listeners Menu
         imageButton_tools.setOnClickListener { changeCategories(imageButton_tools) }
@@ -74,7 +88,9 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
 
     override fun getCategorySelected(idCategory: Int) {
         super.getCategorySelected(idCategory)
-        createProductFragment(idCategory)
+        Toast.makeText(this, idCategory.toString(), Toast.LENGTH_LONG).show()
+        // TODO:
+        //createProductFragment(idCategory)
     }
 
     fun createProductFragment(idCategory: Int){
@@ -99,5 +115,21 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener {
         val explicitIntent = Intent(this,
             ShoppingCartActivity::class.java)
         startActivity(explicitIntent)
+    }
+
+    fun createDialogCloseSession(){
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Close session")
+        dialogBuilder.setMessage("Are you sure to close your session ${textView_userName.text}?")
+        dialogBuilder.setIcon(R.drawable.ic_userlogin)
+        dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, which ->
+            // TODO: Delete data of the user
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+        })
+        dialogBuilder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
+            //pass
+        })
+        dialogBuilder.create().show()
     }
 }

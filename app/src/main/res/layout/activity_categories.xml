@@ -103,7 +103,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/avatar" />
+        app:srcCompat="@drawable/ic_avatar" />
 
     <ImageView
         android:id="@+id/imageView10"

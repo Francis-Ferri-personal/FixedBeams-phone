@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".ui.MainActivity"
+            android:screenOrientation = "portrait" />
 
         <!-- ESTOS META DATAS SON PARA EL GOOGLE MAPS -->
         <meta-data

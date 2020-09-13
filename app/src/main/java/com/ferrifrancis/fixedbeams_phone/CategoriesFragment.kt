@@ -34,8 +34,7 @@ class CategoriesFragment : Fragment() {
             idDomain = it.getInt(ID_DOMAIN)
         }
         if (Network.networkExists(context as AppCompatActivity)){
-            if(idDomain != null){
-                // TODO: Traer las categorias
+            if(idDomain != -1){
                 requestHttpCategories(idDomain)
             }
         } else {
@@ -50,8 +49,7 @@ class CategoriesFragment : Fragment() {
         // Inflate the layout for this fragment
         var view: View =  inflater.inflate(R.layout.fragment_categories, container, false)
         view.gridView.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(context,categories[position].id.toString(), Toast.LENGTH_LONG).show()
-            // TODO: Funcionalidad
+            listener.getCategorySelected(categories[position].id)
         }
         return view
     }
