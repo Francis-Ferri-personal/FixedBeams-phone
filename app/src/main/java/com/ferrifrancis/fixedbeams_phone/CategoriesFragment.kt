@@ -2,12 +2,17 @@ package com.ferrifrancis.fixedbeams_phone
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.fragment_categories.view.*
 
 private const val ID_DOMAIN = "idDomain"
@@ -25,6 +30,7 @@ class CategoriesFragment : Fragment() {
         if (Network.networkExists(context as AppCompatActivity)){
             if(idDomain != null){
                 // TODO: Traer las categorias
+                requestHttpCategories(idDomain)
             }
         } else {
             Toast.makeText(context, "No internet conection", Toast.LENGTH_SHORT).show()
@@ -66,5 +72,21 @@ class CategoriesFragment : Fragment() {
                     putInt(ID_DOMAIN, idDomain)
                 }
             }
+    }
+
+    private fun requestHttpCategories(idDomain: Int){
+        val url: String = "${URL_BACKEND}/${DOMAIN_CATEGORIES}/" + idDomain.toString()
+        Toast.makeText(context,url,Toast.LENGTH_LONG).show()
+        val queue= Volley.newRequestQueue(context)
+        val request = StringRequest(Request.Method.GET, url, Response.Listener<String>{
+            response ->
+            try {
+                Log.d("FixedBeams", response)
+                Toast.makeText(context,response,Toast.LENGTH_LONG).show()
+            } catch (e: Exception){
+                Log.d("FixedBeams", e.toString())
+            }
+        }, Response.ErrorListener {  })
+        queue.add(request)
     }
 }
