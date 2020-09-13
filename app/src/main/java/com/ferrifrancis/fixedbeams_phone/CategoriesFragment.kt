@@ -13,6 +13,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.ferrifrancis.fixedbeams_phone.data.category.CategoriesListClass
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_categories.view.*
 
 private const val ID_DOMAIN = "idDomain"
@@ -76,17 +78,20 @@ class CategoriesFragment : Fragment() {
 
     private fun requestHttpCategories(idDomain: Int){
         val url: String = "${URL_BACKEND}/${DOMAIN_CATEGORIES}/" + idDomain.toString()
-        Toast.makeText(context,url,Toast.LENGTH_LONG).show()
         val queue= Volley.newRequestQueue(context)
         val request = StringRequest(Request.Method.GET, url, Response.Listener<String>{
             response ->
             try {
-                Log.d("FixedBeams", response)
-                Toast.makeText(context,response,Toast.LENGTH_LONG).show()
+                val gson = Gson()
+                val categories: String = "{\"categories\": ${response}}"
+                val res = gson.fromJson(categories, CategoriesListClass::class.java)
+                // res.categories[0].name
+                Toast.makeText(context, res.categories[0].name, Toast.LENGTH_LONG).show()
+                // TODO: Show categories and images
             } catch (e: Exception){
-                Log.d("FixedBeams", e.toString())
+                Log.d("Error", e.toString())
             }
-        }, Response.ErrorListener {  })
+        }, Response.ErrorListener { error ->  Log.d("Error", error.toString()) })
         queue.add(request)
     }
 }
