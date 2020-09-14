@@ -13,12 +13,12 @@ import com.ferrifrancis.fixedbeams_phone.common.PASSWORD_KEY
 import com.ferrifrancis.fixedbeams_phone.common.SECRET_SHARED_FILENAME
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager.Companion.sharedPreferences
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_login.*
 
-class SignInActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_login)
 
         InicializarArchivoDePreferencias()
         LeerDatosDeArchivoPreferenciasEncriptado()

@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         dialogBuilder.setIcon(R.drawable.ic_userlogin)
         dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, which ->
             closeUserSession()
-            startActivity(Intent(this, SignInActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         })
         dialogBuilder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which ->

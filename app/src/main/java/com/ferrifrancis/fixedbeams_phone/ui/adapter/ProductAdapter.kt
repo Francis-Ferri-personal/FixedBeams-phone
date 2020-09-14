@@ -8,7 +8,6 @@ import android.widget.*
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.common.DETAIL_MAX_CHARS
 import com.ferrifrancis.fixedbeams_phone.data.ProductModelClass
-import com.ferrifrancis.fixedbeams_phone.ui.DetallesActivity
 import com.ferrifrancis.fixedbeams_phone.ui.ShoppingCartActivity
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -50,7 +49,7 @@ class ProductAdapter (private val context: Activity, private val products: Array
     }
     fun goToShoppingCartActivity(product: ProductModelClass){
         val intentExplicito = Intent(this.context,
-            DetallesActivity::class.java).apply {
+            ShoppingCartActivity::class.java).apply {
             putExtra("ProductDocumentID",product.productId)
         }
         this.context.startActivity(intentExplicito)

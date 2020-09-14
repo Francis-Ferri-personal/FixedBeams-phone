@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 class Network {
     companion object {
         fun networkExists(activity: AppCompatActivity): Boolean{
+            var result = false
             val connectivityManager: ConnectivityManager = activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val networkInfo: NetworkCapabilities? = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            var result = false
             if(networkInfo != null){
                 result = when {
                     networkInfo.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true

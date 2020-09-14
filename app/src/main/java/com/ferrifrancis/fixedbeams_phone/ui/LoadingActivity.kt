@@ -1,141 +1,108 @@
 package com.ferrifrancis.fixedbeams_phone.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
+import com.ferrifrancis.fixedbeams_phone.LOGIN_KEY
+import com.ferrifrancis.fixedbeams_phone.PASSWORD_KEY
 import com.ferrifrancis.fixedbeams_phone.R
-import com.ferrifrancis.fixedbeams_phone.util.ConnectionType
-import com.ferrifrancis.fixedbeams_phone.util.NetworkMonitorUtil
-import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
+import com.ferrifrancis.fixedbeams_phone.SECRET_FILENAME
+import com.ferrifrancis.fixedbeams_phone.services.Network
 
 class LoadingActivity : AppCompatActivity() {
-    //Based on: https://devdeeds.com/android-create-splash-screen-kotlin/
-    /*private var mDelayHandler: Handler? = null
-    private val SPLASH_DELAY: Long = 1500 //1.5 seconds*/
 
-    private val networkMonitor = NetworkMonitorUtil(this)
+    private var internetStatus = false
+    lateinit var sharedPreferences : SharedPreferences
 
-    private var internetStatus = false;
+    private lateinit var  email: String
+    private lateinit var password: String
 
-    /*internal val goToInicioActivity: Runnable = Runnable {
-        if (!isFinishing && internetStatus) {
-
-            // val intentToInicioActivity = Intent(this, SignInActivity::class.java)
-            val intentToInicioActivity = Intent(this, MainActivity::class.java)
-            startActivity(intentToInicioActivity)
-            finish()
-        }
-    }*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
-        networkMonitor.register()
-        //saveData()
+        initializeSharedPreferences()
         checkInternetStatus()
-        /*// Leugo de la valdación ir a la actividad Inicio
-        //Initialize the Handler
-        mDelayHandler = Handler()
-
-        //Navigate with delay
-        mDelayHandler!!.postDelayed(goToInicioActivity, SPLASH_DELAY)*/
-    }
-/*    public override fun onDestroy() {
-        super.onDestroy()
-    }*/
-
-    override fun onResume() {
-        super.onResume()
-        networkMonitor.register()
     }
 
-    override fun onStop() {
-        super.onStop()
-        networkMonitor.unregister()
-    }
-
-    fun checkInternetStatus(){
-        networkMonitor.result = { isAvailable, type ->
-            runOnUiThread {
-                when (isAvailable) {
-                    true -> {
-                        when (type) {
-                            ConnectionType.Wifi -> {
-                                Log.i("NETWORK_MONITOR_STATUS", "Wifi Connection")
-                                Toast.makeText(this,"Wifi Connection",Toast.LENGTH_LONG).show()
-                                internetStatus = isAvailable
-                                if(checkSessionLogin()){
-                                    goToCategoriesActivity()
-                                }else{
-                                    goToInicioActivity()
-                                }
-                            }
-                            ConnectionType.Cellular -> {
-                                Log.i("NETWORK_MONITOR_STATUS", "Cellular Connection")
-                                Toast.makeText(this,"Cellular Connection",Toast.LENGTH_LONG).show()
-                                internetStatus = isAvailable
-                                if(checkSessionLogin()){
-                                    goToCategoriesActivity()
-                                }else{
-                                    goToInicioActivity()
-                                }
-                            }
-                            else -> {
-                                internetStatus = isAvailable
-                            }
-                        }
-                    }
-                    false -> {
-                        Log.i("NETWORK_MONITOR_STATUS", "No Connection")
-                        Toast.makeText(this,"No Connection",Toast.LENGTH_LONG).show()
-                        internetStatus = isAvailable
-                    }
-                }
+    private fun checkInternetStatus(){
+        internetStatus = Network.networkExists(this)
+        if(internetStatus){
+            if(checkSessionLogin()){
+                goToMainActivity()
+            }else{
+                goToLoginActivity()
             }
+        } else {
+            Toast.makeText(this,"No Connection",Toast.LENGTH_LONG).show()
+            // TODO: Alert DIalog
         }
     }
 
-    fun checkSessionLogin(): Boolean{
-        SharedPreferencesManager.initPrefFile(this)
-        var userData = SharedPreferencesManager.readUserDataFromEncryptedPrefFile(this)
-        if (userData.isNullOrEmpty()){
-            Log.d("TAG","GOING-BACK")
-            return false
-        }else{
-            for (data in userData){
-                if(data.isNullOrEmpty()){
-                    Log.d("TAG","EMPTY")
-                    return false
-                }
-                Log.d("TAG","NOT-EMPTY")
-                return true
-            }
-        }
+    // TODO: Probar en on resume
 
-    return false
-    }
-    fun goToCategoriesActivity(){
-        Log.d("TAG","ENTERING GO-TO-CATEGORIES")
-        var userData = SharedPreferencesManager.readUserDataFromEncryptedPrefFile(this)
-        val intentExplicito = Intent(this,
-            CategoriesActivity::class.java).apply {
-            putExtra("UserData",userData[0])
+
+    private fun checkSessionLogin(): Boolean{
+        readDataEncryptedPreferencesFile()
+        if (email != "" && password != ""){
+            return true
         }
-        startActivity(intentExplicito)
-        finish()
-        Log.d("TAG","EXITING GO-TO-CATEGORIES?")
+        return false
     }
-    fun goToInicioActivity() {
-        val intentToInicioActivity = Intent(
-            this,
-            SignInActivity::class.java
-        )
-        startActivity(intentToInicioActivity)
+
+
+    private fun goToMainActivity(){
+        val intentToMain = Intent(this, MainActivity::class.java)
+        intentToMain.putExtra(LOGIN_KEY, email)
+        intentToMain.putExtra(PASSWORD_KEY, password)
+        startActivity(intent)
         finish()
     }
-    fun saveData(){
-        SharedPreferencesManager.writeUserDataToEncryptedPrefFile("andresbrago","123456789",this)
+
+    private fun goToLoginActivity() {
+        val intentToLogin = Intent(this, LoginActivity::class.java)
+        startActivity(intentToLogin)
+        finish()
+    }
+
+    private fun  initializeSharedPreferences(){
+        val masterKey: MasterKey = MasterKey.Builder(this,  MasterKey.DEFAULT_MASTER_KEY_ALIAS)
+            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+            .build()
+        sharedPreferences = EncryptedSharedPreferences.create(this,
+            SECRET_FILENAME,
+            masterKey,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM)
+    }
+
+    private fun readDataEncryptedPreferencesFile() {
+        email = sharedPreferences.getString(LOGIN_KEY, "").toString()
+        password = sharedPreferences.getString(PASSWORD_KEY, "").toString()
     }
 
 }
+
+/*
+fun saveData(){
+        SharedPreferencesManager.writeUserDataToEncryptedPrefFile("andresbrago","123456789",this)
+    }
+
+fun writeDataEncryptedPreferencesFile() {
+        if (checkBoxRecordarme.isChecked) {
+            sharedPreferences.edit()
+                .putString(LOGIN_KEY, editText_email_ingreso.text.toString())
+                .putString(PASSWORD_KEY, editText_password_ingreso.text.toString())
+                .apply()
+        } else {
+            sharedPreferences
+                .edit()
+                .putString(LOGIN_KEY, "")
+                .putString(PASSWORD_KEY, "")
+                .apply()
+        }
+    }
+ */
