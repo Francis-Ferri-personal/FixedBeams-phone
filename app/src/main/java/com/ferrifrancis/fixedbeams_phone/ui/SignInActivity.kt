@@ -50,7 +50,7 @@ class SignInActivity : AppCompatActivity() {
     }
     fun goToCategoriesActivity(){
         val intentExplicito = Intent(this,
-            CategoriesActivity::class.java)
+            MainActivity::class.java)
         startActivity(intentExplicito)
     }
     fun InicializarArchivoDePreferencias(){
