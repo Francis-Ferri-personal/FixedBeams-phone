@@ -14,13 +14,16 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="logo_fixedBeams">A saw as the logo</string>
     <string name="user_name">User name</string>
     <string name="avatar_image">Avatar image</string>
-    <string name="button_search">A magnifying glass</string>
-    <string name="button_cart">A shopping cart</string>
+    <string name="button_search">Search button</string>
+    <string name="button_cart">Shopping cart button</string>
     <string name="location">Location</string>
-    <string name="imageButton_menu">Menu icon</string>
-    <string name="mageButton_helmet">A helmet</string>
-    <string name="imageButton_brick">A brick</string>
-    <string name="imageButton_drill">A drill</string>
+
+
+    <string name="imageButton_tools">Tool button</string>
+    <string name="imageButton_material">Material button</string>
+    <string name="imageButton_equipment">Equipment button</string>
+
+
     <string name="imageProduct">A image from a product</string>
     <string name="discounts_total">Discounts in this order: $0.00</string>
     <string name="button_continue">Continue</string>
@@ -47,4 +50,24 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="textViewLocation">Location</string>
     <string name="button_signIn">INICIAR SESIÓN</string>
     <string name="editText_usernameEmail">Nombre o correo electrónico</string>
+    <string name="title_activity_prueba">prueba</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="imageButton_vehicles">Vehicle button</string>
+    <string name="imageButton_teams">Team button</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="imageView_category">Category image</string>
+    <string name="textView_category">Category</string>
+    <string name="textView_search">Search</string>
+    <string name="textView_serachProduct">Product:</string>
+    <string name="editText_searchProduct">Write the product\'s name</string>
 </resources>

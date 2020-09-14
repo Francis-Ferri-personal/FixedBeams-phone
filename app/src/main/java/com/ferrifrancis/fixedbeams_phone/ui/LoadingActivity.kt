@@ -14,8 +14,8 @@ class LoadingActivity : AppCompatActivity() {
     internal val goToInicioActivity: Runnable = Runnable {
         if (!isFinishing) {
 
-            val intentToInicioActivity = Intent(this,
-                SignInActivity::class.java)
+            // val intentToInicioActivity = Intent(this, SignInActivity::class.java)
+            val intentToInicioActivity = Intent(this, MainActivity::class.java)
             startActivity(intentToInicioActivity)
             finish()
         }

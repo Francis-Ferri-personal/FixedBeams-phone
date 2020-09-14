@@ -15,13 +15,10 @@ class RegistroActivity : AppCompatActivity() {
         }
     }
     fun goToInicioActivity(){
-        val intentExplicito = Intent(this,
-            SignInActivity::class.java)
-        startActivity(intentExplicito)
-<<<<<<< HEAD
+        val explicitIntent = Intent(this,
+            MainActivity::class.java)
+        startActivity(explicitIntent)
 
-=======
->>>>>>> parent of 38fdf7d... Registro Y login
     }
 
 }
