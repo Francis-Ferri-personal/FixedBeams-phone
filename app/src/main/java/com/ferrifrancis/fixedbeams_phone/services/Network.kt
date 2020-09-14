@@ -1,4 +1,4 @@
-package com.ferrifrancis.fixedbeams_phone
+package com.ferrifrancis.fixedbeams_phone.services
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -13,6 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBdFYl667hg8vmsnqQg8DCzddZ6sLKV3VE" />
+
+        <activity android:name=".ui.LoadingActivity"
+            android:screenOrientation = "portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.MainActivity"
             android:screenOrientation = "portrait" />
 
@@ -29,13 +41,7 @@
         <activity android:name=".ui.RegistroActivity" />
         <activity android:name=".ui.ShoppingCartActivity" />
         <activity android:name=".ui.SignInActivity" />
-        <activity android:name=".ui.LoadingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

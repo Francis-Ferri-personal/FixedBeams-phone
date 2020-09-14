@@ -1,4 +1,4 @@
-package com.ferrifrancis.fixedbeams_phone
+package com.ferrifrancis.fixedbeams_phone.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -13,6 +13,10 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.ferrifrancis.fixedbeams_phone.DOMAIN_CATEGORIES
+import com.ferrifrancis.fixedbeams_phone.services.Network
+import com.ferrifrancis.fixedbeams_phone.R
+import com.ferrifrancis.fixedbeams_phone.URL_BACKEND
 import com.ferrifrancis.fixedbeams_phone.adapters.CategoryAdapter
 import com.ferrifrancis.fixedbeams_phone.data.category.CategoriesListClass
 import com.ferrifrancis.fixedbeams_phone.data.category.CategoryModelClass
@@ -33,7 +37,10 @@ class CategoriesFragment : Fragment() {
         arguments?.let {
             idDomain = it.getInt(ID_DOMAIN)
         }
-        if (Network.networkExists(context as AppCompatActivity)){
+        if (Network.networkExists(
+                context as AppCompatActivity
+            )
+        ){
             if(idDomain != -1){
                 requestHttpCategories(idDomain)
             }
@@ -78,7 +85,7 @@ class CategoriesFragment : Fragment() {
     }
 
     private fun requestHttpCategories(idDomain: Int){
-        val url: String = "${URL_BACKEND}/${DOMAIN_CATEGORIES}/" + idDomain.toString()
+        val url: String = "$URL_BACKEND/$DOMAIN_CATEGORIES/" + idDomain.toString()
         val queue= Volley.newRequestQueue(context)
         val request = StringRequest(Request.Method.GET, url, Response.Listener<String>{
             response ->
