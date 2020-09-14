@@ -14,6 +14,7 @@ import com.ferrifrancis.fixedbeams_phone.common.SECRET_SHARED_FILENAME
 import com.ferrifrancis.fixedbeams_phone.common.USERLOGIN
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager.Companion.sharedPreferences
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registro.*
 
 class RegistroActivity : AppCompatActivity() {
@@ -21,6 +22,12 @@ class RegistroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
         InicializarArchivoDePreferencias()
+
+        textViewIniciarSesion.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
         buttonRegistrarUser.setOnClickListener {
             val email = editTextMail.text.toString()
             val passwordMail = editTextPasswordRegister.text.toString()
@@ -57,7 +64,7 @@ class RegistroActivity : AppCompatActivity() {
     }
     fun EscribirDatosEnArchivoPreferenciasEncriptados(){
 
-        if(checkBoxRecordarme.isChecked){
+        if(checkBox_rememberMe.isChecked){
             sharedPreferences.edit()
                 .putString(USERLOGIN,editTextNameUser.text.toString())
                 .putString(LOGIN_KEY,editTextMail.text.toString())
@@ -97,3 +104,24 @@ class RegistroActivity : AppCompatActivity() {
     }
 
 }
+
+/*
+fun saveData(){
+        SharedPreferencesManager.writeUserDataToEncryptedPrefFile("andresbrago","123456789",this)
+    }
+
+fun writeDataEncryptedPreferencesFile() {
+        if (checkBoxRecordarme.isChecked) {
+            sharedPreferences.edit()
+                .putString(LOGIN_KEY, editText_email_ingreso.text.toString())
+                .putString(PASSWORD_KEY, editText_password_ingreso.text.toString())
+                .apply()
+        } else {
+            sharedPreferences
+                .edit()
+                .putString(LOGIN_KEY, "")
+                .putString(PASSWORD_KEY, "")
+                .apply()
+        }
+    }
+ */

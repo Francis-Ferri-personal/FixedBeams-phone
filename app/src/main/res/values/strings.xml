@@ -71,6 +71,6 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="textView_search">Search</string>
     <string name="textView_serachProduct">Product:</string>
     <string name="editText_searchProduct">Write the product\'s name</string>
-    <string name="checkBoxRecordarme">RECORDARME</string>
+    <string name="checkBoxRecordarme">Recordarme</string>
     <string name="tvDescripcionCategorie">Descripcion de la categoria</string>
 </resources>

@@ -6,25 +6,21 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.ferrifrancis.fixedbeams_phone.LOGIN_KEY
-import com.ferrifrancis.fixedbeams_phone.PASSWORD_KEY
-import com.ferrifrancis.fixedbeams_phone.R
-import com.ferrifrancis.fixedbeams_phone.SECRET_FILENAME
+import com.ferrifrancis.fixedbeams_phone.*
 import com.ferrifrancis.fixedbeams_phone.services.Network
 
 class LoadingActivity : AppCompatActivity() {
 
     private var internetStatus = false
-    lateinit var sharedPreferences : SharedPreferences
+    private lateinit var sharedPreferences : SharedPreferences
 
-    private lateinit var  email: String
-    private lateinit var password: String
-
-    private val CODIGO_SOLICITUD_PERMISO = 100
+    private var  id: Int = 0
+    private lateinit var userName: String
+    private var money: Double = 0.0
+    private lateinit var srcImage: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +53,7 @@ class LoadingActivity : AppCompatActivity() {
 
     private fun checkSessionLogin(): Boolean{
         readDataEncryptedPreferencesFile()
-        if (email != "" && password != ""){
+        if (id > 0){
             return true
         }
         return false
@@ -65,9 +61,11 @@ class LoadingActivity : AppCompatActivity() {
 
     private fun goToMainActivity(){
         val intentToMain = Intent(this, MainActivity::class.java)
-        intentToMain.putExtra(LOGIN_KEY, email)
-        intentToMain.putExtra(PASSWORD_KEY, password)
-        startActivity(intent)
+        intentToMain.putExtra(ID, id)
+        intentToMain.putExtra(USER_NAME, userName)
+        intentToMain.putExtra(MONEY, money)
+        intentToMain.putExtra(SRC_IMAGE, srcImage)
+        startActivity(intentToMain)
         finish()
     }
 
@@ -89,8 +87,10 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     private fun readDataEncryptedPreferencesFile() {
-        email = sharedPreferences.getString(LOGIN_KEY, "").toString()
-        password = sharedPreferences.getString(PASSWORD_KEY, "").toString()
+        id = sharedPreferences.getInt(ID, 0)
+        userName = sharedPreferences.getString(USER_NAME, "").toString()
+        money = sharedPreferences.getFloat(MONEY, 0F).toDouble()
+        srcImage = sharedPreferences.getString(SRC_IMAGE, "").toString()
     }
 
     private fun createDialogNoConnection(){
@@ -112,12 +112,12 @@ class LoadingActivity : AppCompatActivity() {
         return existsFineLocation && existsCoarseLocation
     }
 
-    fun askPermission(){
+    private fun askPermission(){
         requestPermissions(
             arrayOf(
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
                 android.Manifest.permission.ACCESS_COARSE_LOCATION),
-            CODIGO_SOLICITUD_PERMISO)
+            CODE_MAP_PERMISSION)
     }
 
     override fun onRequestPermissionsResult(
@@ -127,8 +127,8 @@ class LoadingActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when(requestCode){
-            CODIGO_SOLICITUD_PERMISO -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            CODE_MAP_PERMISSION -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     checkInternetStatus()
                 } else {
                     finish()
@@ -137,26 +137,4 @@ class LoadingActivity : AppCompatActivity() {
         }
     }
 
-
 }
-
-/*
-fun saveData(){
-        SharedPreferencesManager.writeUserDataToEncryptedPrefFile("andresbrago","123456789",this)
-    }
-
-fun writeDataEncryptedPreferencesFile() {
-        if (checkBoxRecordarme.isChecked) {
-            sharedPreferences.edit()
-                .putString(LOGIN_KEY, editText_email_ingreso.text.toString())
-                .putString(PASSWORD_KEY, editText_password_ingreso.text.toString())
-                .apply()
-        } else {
-            sharedPreferences
-                .edit()
-                .putString(LOGIN_KEY, "")
-                .putString(PASSWORD_KEY, "")
-                .apply()
-        }
-    }
- */

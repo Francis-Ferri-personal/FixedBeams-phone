@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         // Cargar las categorias iniciales
         buttonActualMenu = imageButton_tools
         loadCategories()
