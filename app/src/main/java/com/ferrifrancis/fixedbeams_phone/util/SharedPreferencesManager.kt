@@ -93,7 +93,7 @@ class SharedPreferencesManager {
                     if (origen == "Adaptador") {
                         producto.quantity = 0
                     } // Si viene del adaptador será 0, es su inicialización
-                    else if (origen == "CarritoAdaptador") {
+                    else if (origen == "CarritoAdaptador" || origen == "Activity") {
                         producto.quantity = nuevoProducto.quantity!!
                     } else {
                         producto.quantity =
