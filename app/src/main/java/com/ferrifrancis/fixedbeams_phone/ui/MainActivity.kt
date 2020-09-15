@@ -17,7 +17,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ferrifrancis.fixedbeams_phone.*
 import com.ferrifrancis.fixedbeams_phone.dialogs.SearchDialog
+import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_shopping_cart_list_item.*
 
 class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, SearchDialog.SearchDialogListener, ProductsFragment.ProductListener {
 
@@ -34,6 +36,10 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
     var money: Double = 0.0
     var srcImage: String? = ""
 
+    override fun onResume() {
+        super.onResume()
+        updateCostSummaryBar()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +67,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         imageButton_cart.setOnClickListener { goToShoppingCartActivity() }
         button_viewCart.setOnClickListener { goToShoppingCartActivity() }
 
+
         // Inicializar el boton de busqueda
         imageButton_search.setOnClickListener {
             openSearchDialog()
@@ -78,6 +85,14 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         imageButton_vehicles.setOnClickListener { changeCategories(imageButton_vehicles) }
         imageButton_teams.setOnClickListener { changeCategories(imageButton_teams) }
 
+        updateCostSummaryBar()
+    }
+
+    fun updateCostSummaryBar(){
+        var resumencosto = SharedPreferencesManager.returnProductsTotal(this)
+        textView_ItemNumber.text = resumencosto["Cantidad"].toString()
+
+        textView_priceAccumulated.text = "$ " + resumencosto["Costo"].toString()
     }
 
     fun changeCategories(selectedButton: ImageButton){

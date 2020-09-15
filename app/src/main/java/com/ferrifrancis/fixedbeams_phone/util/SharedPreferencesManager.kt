@@ -64,6 +64,18 @@ class SharedPreferencesManager {
             }
         }
 
+        fun returnProductsTotal(context: Context): Map<String, Any> {
+            var productosArrayList = readSavedProducts(context)
+            var cantidadProductosTotal = productosArrayList.size
+            var costoProductosTotal = 0.0
+            for(producto in productosArrayList){
+                if(producto.quantity != null){
+                    costoProductosTotal+= producto.price * producto.quantity!!
+                }
+            }
+            return mapOf("Cantidad" to cantidadProductosTotal, "Costo" to costoProductosTotal)
+        }
+
         fun saveArrayList(list: ArrayList<ProductModelClass>, context: Context) {
             initPrefFile(context)
             val editor = sharedPreferences.edit()
@@ -81,7 +93,7 @@ class SharedPreferencesManager {
                     if (origen == "Adaptador") {
                         producto.quantity = 0
                     } // Si viene del adaptador será 0, es su inicialización
-                    else if (origen == "CarritoAdaptador") {
+                    else if (origen == "CarritoAdaptador" || origen == "Activity") {
                         producto.quantity = nuevoProducto.quantity!!
                     } else {
                         producto.quantity =
