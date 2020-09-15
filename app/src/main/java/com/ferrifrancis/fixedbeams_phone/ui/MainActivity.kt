@@ -3,6 +3,7 @@ package com.ferrifrancis.fixedbeams_phone.ui
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
@@ -10,20 +11,46 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.ferrifrancis.fixedbeams_phone.R
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.ferrifrancis.fixedbeams_phone.*
 import com.ferrifrancis.fixedbeams_phone.dialogs.SearchDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, SearchDialog.SearchDialogListener {
+
     val fragmentManager: FragmentManager = supportFragmentManager
+    private lateinit var sharedPreferences : SharedPreferences
+
     lateinit var buttonActualMenu: ImageButton;
     var idDomain: Int = 4
+
+    // User data
+    var idUser: Int = 0
+    var userName: String ="Default"
+    var money: Double = 0.0
+    var srcImage: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initializeSharedPreferences()
+        // Obtain user data
 
+        idUser = intent.getIntExtra(ID, idUser)
+        money = intent.getDoubleExtra(MONEY, money)
+        userName = intent.getStringExtra(USER_NAME)
+        srcImage = intent.getStringExtra(SRC_IMAGE)
+        textView_userName.text = userName
+        textView_money.text = "$ " + String.format("%.2f", money)
 
+        if (!srcImage.isNullOrEmpty()){
+            //Glide.with(this).load(srcImage).into(imageButton_user)
+            loadProfileImage()
+        }
         // Cargar las categorias iniciales
         buttonActualMenu = imageButton_tools
         loadCategories()
@@ -43,7 +70,6 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         imageButton_user.setOnClickListener {
             createDialogCloseSession()
         }
-
 
         // Inicializar los click listeners Menu
         imageButton_tools.setOnClickListener { changeCategories(imageButton_tools) }
@@ -128,7 +154,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         dialogBuilder.setMessage("Are you sure to close your session ${textView_userName.text}?")
         dialogBuilder.setIcon(R.drawable.ic_userlogin)
         dialogBuilder.setPositiveButton("Close", DialogInterface.OnClickListener { dialog, which ->
-            closeUserSession()
+            cleanUserData()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         })
@@ -143,7 +169,31 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         searchDialog.show(supportFragmentManager, "Search Dialog")
     }
 
-    private fun closeUserSession(){
-        // TODO: Delete user Data fron SharedPreferences
+    private fun  initializeSharedPreferences(){
+        val masterKey: MasterKey = MasterKey.Builder(this,  MasterKey.DEFAULT_MASTER_KEY_ALIAS)
+            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+            .build()
+        sharedPreferences = EncryptedSharedPreferences.create(this,
+            SECRET_FILENAME,
+            masterKey,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM)
+    }
+
+    private fun cleanUserData(){
+        sharedPreferences.edit()
+            .putInt(ID, 0)
+            .putString(USER_NAME, "")
+            .putFloat(MONEY, 0F)
+            .putString(SRC_IMAGE, "")
+            .apply()
+    }
+
+    private fun loadProfileImage(){
+        Glide.with(this).load(srcImage)
+            .centerInside()
+            .circleCrop()
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(imageButton_user)
     }
 }

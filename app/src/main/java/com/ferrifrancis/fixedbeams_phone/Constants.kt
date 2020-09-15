@@ -18,3 +18,7 @@ const val ID = "id"
 const val USER_NAME = "userName"
 const val MONEY = "money"
 const val SRC_IMAGE = "srcImage"
+
+// User login
+const val EMAIL = "email"
+const val PASSWORD = "password"

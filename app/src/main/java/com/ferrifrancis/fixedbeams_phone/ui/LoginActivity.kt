@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         initializeSharedPreferences()
+        readDataEncryptedPreferencesFile()
 
         textView_singUp.setOnClickListener {
             startActivity(Intent(this, RegistroActivity::class.java))
@@ -114,6 +115,12 @@ class LoginActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    private fun readDataEncryptedPreferencesFile() {
+        editText_usernameEmail.setText(sharedPreferences.getString(EMAIL, ""))
+        editTextPasswordSigIn.setText(sharedPreferences.getString(PASSWORD, ""))
+
+    }
+
     private fun saveSharedPreferences(user: UserModelClass){
         if(checkBox_rememberMe.isChecked){
             sharedPreferences.edit()
@@ -121,19 +128,26 @@ class LoginActivity : AppCompatActivity() {
                 .putString(USER_NAME, user.userName)
                 .putFloat(MONEY, user.money.toFloat())
                 .putString(SRC_IMAGE, user.srcImage)
+                .putString(EMAIL, editText_usernameEmail.text.toString())
+                .putString(PASSWORD, editTextPasswordSigIn.text.toString())
                 .apply()
         } else {
-            sharedPreferences.edit()
-                .putInt(ID, 0)
-                .putString(USER_NAME, "")
-                .putFloat(MONEY, 0F)
-                .putString(SRC_IMAGE, "")
-                .apply()
+            cleanUserDataLogin()
         }
     }
 
+    private fun cleanUserDataLogin(){
+        sharedPreferences.edit()
+            .putInt(ID, 0)
+            .putString(USER_NAME, "")
+            .putFloat(MONEY, 0F)
+            .putString(SRC_IMAGE, "")
+            .putString(EMAIL, "")
+            .putString(PASSWORD, "")
+            .apply()
+    }
+
     private fun goToMainActivity(user: UserModelClass){
-        Toast.makeText(this, "SE LLEGO", Toast.LENGTH_LONG).show()
         val intentToMain = Intent(this, MainActivity::class.java)
         intentToMain.putExtra(ID, user.id)
         intentToMain.putExtra(USER_NAME, user.userName)
@@ -142,5 +156,7 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intentToMain)
         finish()
     }
+
+
 }
 
