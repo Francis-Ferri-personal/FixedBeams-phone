@@ -60,36 +60,55 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="372dp"
-        android:layout_height="515dp"
-        android:layout_marginTop="15dp"
+    <ListView
+        android:id="@+id/listView_cart_products"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/continue_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.788">
+        tools:listitem="@layout/layout_shopping_cart_list_item">
 
-        <ListView
-            android:id="@+id/listView_cart_products"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:listitem="@layout/layout_shopping_cart_list_item" />
-    </ScrollView>
+    </ListView>
 
     <Button
         android:id="@+id/continue_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="24dp"
+        android:background="#FECB67"
         android:text="@string/button_continue"
-        android:backgroundTint="#FECB67"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintEnd_toStartOf="@+id/totalTextView"
+        app:layout_constraintStart_toEndOf="@+id/cantidadProd" />
+
+    <TextView
+        android:id="@+id/cantidadProd"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="#FECB67"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="N"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/totalTextView"
+        android:layout_width="94dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="#FECB67"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Total"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

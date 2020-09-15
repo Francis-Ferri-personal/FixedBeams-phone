@@ -10,9 +10,13 @@ import android.widget.TextView
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.data.ProductModelClass
 import kotlinx.android.synthetic.main.layout_shopping_cart_list_item.view.*
+import kotlin.collections.hashMapOf
 
-class CartProductAdapter (private val context: Activity, private val products: ArrayList<ProductModelClass>): BaseAdapter(){
+class CartProductAdapter (private val context: Activity, private val products: ArrayList<ProductModelClass>, public var cantidadesArray: HashMap<View, Int>,
+                          public var rowViews: ArrayList<View> ): BaseAdapter(){
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+
         val inflater = context.layoutInflater
         val rowView = inflater.inflate(R.layout.layout_shopping_cart_list_item, null, true)
         val textViewProductName = rowView.findViewById<TextView>(R.id.textView_productName)
@@ -22,7 +26,12 @@ class CartProductAdapter (private val context: Activity, private val products: A
         textViewProductName.text = "${products[position].productName}"
         textViewProductPrice.text = "$ ${products[position].productPrice}"
         textViewDiscount.text = "Discount: 0%"
+
+        rowViews.add(rowView)
+        cantidadesArray[rowView] = 1
         addButtonListeners(rowView)
+
+
         return rowView
     }
 
@@ -31,16 +40,31 @@ class CartProductAdapter (private val context: Activity, private val products: A
         itemView.plus_button.setOnClickListener {
             tempCounter += 1
             itemView.textView_quantity.text = tempCounter.toString()
+            cantidadesArray.set(itemView,tempCounter)
+            println("------------------")
+            println(cantidadesArray.get(itemView))
+            println("------------------")
         }
         itemView.minus_button.setOnClickListener {
             tempCounter -= 1
             itemView.textView_quantity.text = tempCounter.toString()
+            cantidadesArray.set(itemView,tempCounter)
+            println("------------------")
+            println(cantidadesArray.get(itemView))
+            println("------------------")
         }
+        println("------------------")
+        println("------------------")
     }
 
     override fun getItem(position: Int): Any {
         return products.get(position)
     }
+
+    fun getCantidades(): HashMap<View,Int>{
+        return cantidadesArray
+    }
+
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
