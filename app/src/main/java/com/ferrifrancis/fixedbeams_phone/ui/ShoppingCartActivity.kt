@@ -3,8 +3,10 @@ package com.ferrifrancis.fixedbeams_phone.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
+import com.ferrifrancis.fixedbeams_phone.ui.adapter.CartProductAdapter
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import kotlinx.android.synthetic.main.activity_products.*
 import kotlinx.android.synthetic.main.activity_shopping_cart.*
@@ -20,25 +22,15 @@ class ShoppingCartActivity : AppCompatActivity() {
         }
     }
     fun obtainProducts(){
-        /*products.add(
-            ProductModelClass(
-                1,
-                "Producto 1",
-                "Detalle 1",
-                20.00
+        products = SharedPreferencesManager.readSavedProducts(this)
+        if(products.size == 0){
+            Toast.makeText(this, "No existen productos", Toast.LENGTH_LONG).show()
+        }
+        listView_cart_products.adapter =
+            CartProductAdapter(
+                this,
+                products
             )
-        )
-        products.add(
-            ProductModelClass(
-                2,
-                "Producto 2",
-                "Detalle 2",
-                20.00
-            )
-        )*/
-        //products = SharedPreferencesManager.readSavedProducts(this)
-
-
     }
     fun goToPagosActivity(){
         val intentExplicito = Intent(this,
