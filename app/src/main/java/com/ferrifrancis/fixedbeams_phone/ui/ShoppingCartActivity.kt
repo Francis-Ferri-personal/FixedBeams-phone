@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.BaseAdapter
 import com.ferrifrancis.fixedbeams_phone.R
-import com.ferrifrancis.fixedbeams_phone.data.ProductModelClass
-import com.ferrifrancis.fixedbeams_phone.ui.adapter.CartProductAdapter
-import com.ferrifrancis.fixedbeams_phone.ui.adapter.ProductAdapter
+import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
+import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import kotlinx.android.synthetic.main.activity_products.*
 import kotlinx.android.synthetic.main.activity_shopping_cart.*
 import java.util.*
@@ -34,7 +33,7 @@ class ShoppingCartActivity : AppCompatActivity() {
         println("------------------")
     }
     fun obtainProducts(){
-        products.add(
+        /*products.add(
             ProductModelClass(
                 1,
                 "Producto 1",
@@ -66,7 +65,14 @@ class ShoppingCartActivity : AppCompatActivity() {
         )
         cantidadesArray  = adaptador.getCantidades()
         listView_cart_products.adapter = adaptador
+        )*/
+        //products = SharedPreferencesManager.readSavedProducts(this)
 
+        listView_cart_products.adapter =
+            CartProductAdapter(
+                this,
+                products
+            )
     }
     fun goToPagosActivity(){
         val intentExplicito = Intent(this,

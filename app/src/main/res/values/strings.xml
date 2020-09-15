@@ -41,6 +41,7 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="editTextNameUser">Nombre</string>
     <string name="editTextMail">Correo Electronico</string>
     <string name="editTextPassword">Contraseña</string>
+    <string name="editTextPasswordConfirm">Confirmar Contraseña</string>
     <string name="buttonRegistrarUser">REGISTRATE</string>
     <string name="textViewFixedBeams">Fixed</string>
     <string name="textViewBeams">Beams</string>
@@ -70,4 +71,10 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="textView_search">Search</string>
     <string name="textView_serachProduct">Product:</string>
     <string name="editText_searchProduct">Write the product\'s name</string>
+    <string name="checkBoxRecordarme">Recordarme</string>
+    <string name="tvDescripcionCategorie">Descripcion de la categoria</string>
+    <string name="textView_money">money</string>
+    <string name="editText_userName">User name</string>
+    <string name="checkBox_keepOpen">Keep open</string>
+    <string name="textView_stock">Stock</string>
 </resources>
