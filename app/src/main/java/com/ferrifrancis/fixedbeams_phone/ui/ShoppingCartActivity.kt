@@ -24,10 +24,6 @@ class ShoppingCartActivity : AppCompatActivity() {
         continue_button.setOnClickListener {
             goToPagosActivity()
         }
-      /*  */
-        println("------------------")
-        println("Paso shoping")
-        println("------------------")
     }
     fun obtainProducts(){
         products = SharedPreferencesManager.readSavedProducts(this)
