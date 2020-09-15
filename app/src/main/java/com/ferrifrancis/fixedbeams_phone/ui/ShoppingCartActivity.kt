@@ -8,14 +8,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.fixedbeams_phone.R
-import com.ferrifrancis.fixedbeams_phone.adapters.CartProductAdapter
-import com.ferrifrancis.fixedbeams_phone.adapters.ProductAdapter
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
-import kotlinx.android.synthetic.main.activity_products.*
 import kotlinx.android.synthetic.main.activity_shopping_cart.*
-import java.util.*
-import kotlin.collections.ArrayList
 
 class ShoppingCartActivity : AppCompatActivity() {
     var products = arrayListOf<ProductModelClass>()
@@ -43,11 +38,11 @@ class ShoppingCartActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
-        listView_cart_products.adapter =
+       /* listView_cart_products.adapter =
             CartProductAdapter(
                 this,
                 products
-            )
+            )*/
     }
     fun goToPagosActivity(){
         val intentExplicito = Intent(this,
@@ -57,14 +52,14 @@ class ShoppingCartActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        cantidadProd.text = products.size.toString()
+        /*cantidadProd.text = products.size.toString()
         var total = 0.0
         var i = 0
         products.forEach{
         //    total += it.productPrice * cantidadesArray.get(rowViews.get(i))!!
             i += 1
         }
-        totalTextView.text = total.toString()
+        totalTextView.text = total.toString()*/
 
         
     }

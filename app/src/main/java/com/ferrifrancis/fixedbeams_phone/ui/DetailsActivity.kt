@@ -93,7 +93,7 @@ class DetailsActivity : AppCompatActivity() {
             tempCounter -= 1
             cantidadTextView.text = tempCounter.toString()
         }
-        button.setOnClickListener {
+        addCartButton.setOnClickListener {
             var arrayList: ArrayList<ProductModelClass> =
                 SharedPreferencesManager.readSavedProducts(it.context)
             product.quantity = tempCounter
