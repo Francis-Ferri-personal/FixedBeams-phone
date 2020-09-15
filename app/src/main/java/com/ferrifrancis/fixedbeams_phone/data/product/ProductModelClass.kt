@@ -6,7 +6,8 @@ data class ProductModelClass (
     var summary: String,
     var price: Double,
     var stock: Int,
-    var srcImage: String
+    var srcImage: String,
+    var quantity: Int? = 1
 )
 
 /*

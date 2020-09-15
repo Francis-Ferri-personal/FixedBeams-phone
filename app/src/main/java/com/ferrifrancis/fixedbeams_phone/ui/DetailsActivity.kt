@@ -22,8 +22,9 @@ import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.activity_main.*
 
-class DetailsActivity: AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
 
     private lateinit var product: ProductModelClass
     var products = arrayListOf<ProductModelClass>()
@@ -38,23 +39,22 @@ class DetailsActivity: AppCompatActivity() {
         }
     }
 
-
-    private fun requestHttpProduct(idProduct: Int){
+    private fun requestHttpProduct(idProduct: Int) {
         val url: String = "$URL_BACKEND/$PRODUCT/" + idProduct.toString()
-        val queue= Volley.newRequestQueue(this)
-        val request = StringRequest(Request.Method.GET, url, Response.Listener<String>{
-                response ->
+        val queue = Volley.newRequestQueue(this)
+        val request = StringRequest(Request.Method.GET, url, Response.Listener<String> { response ->
             try {
-                product = Gson().fromJson(response, ProductModelClass::class.java)
+                val product = Gson().fromJson(response, ProductModelClass::class.java)
+                product.quantity = 1
                 setFields(product)
-                addButtonListeners()
-            } catch (e: Exception){
+                addButtonListeners(product)
+            } catch (e: Exception) {
                 Log.d("Error", e.toString())
             }
-        }, Response.ErrorListener { error ->  Log.d("Error", error.toString()) })
-
+        }, Response.ErrorListener { error -> Log.d("Error", error.toString()) })
         queue.add(request)
     }
+
 
     fun setFields(product: ProductModelClass) {
         val textViewTitulo = findViewById<TextView>(R.id.tituloTextView)
@@ -79,11 +79,11 @@ class DetailsActivity: AppCompatActivity() {
 
         textViewDescripcion.text = product.summary
         textViewPrice.text = "$" + product.price.toString()
-        textViewCantidad.text = product.stock!!.toString()
+        textViewCantidad.text = product.quantity.toString()
 
     }
 
-    fun addButtonListeners() {
+    fun addButtonListeners(product: ProductModelClass) {
         var tempCounter = cantidadTextView.text.toString().toInt()
         imageButton.setOnClickListener {
             tempCounter += 1
@@ -93,10 +93,10 @@ class DetailsActivity: AppCompatActivity() {
             tempCounter -= 1
             cantidadTextView.text = tempCounter.toString()
         }
-        addCartButton.setOnClickListener {
+        button.setOnClickListener {
             var arrayList: ArrayList<ProductModelClass> =
                 SharedPreferencesManager.readSavedProducts(it.context)
-            product.stock -= tempCounter
+            product.quantity = tempCounter
             SharedPreferencesManager.saveProduct(product, this, "Activity")
             Toast.makeText(this, "Producto agregado", Toast.LENGTH_LONG).show()
             finish()

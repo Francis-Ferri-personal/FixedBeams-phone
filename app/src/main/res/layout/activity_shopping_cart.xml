@@ -7,108 +7,77 @@
     tools:context=".ui.ShoppingCartActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="417dp"
-        android:layout_height="29dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"></LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".30">
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-            <ImageView
-                android:id="@+id/imageView_discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.047"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.024"
-                app:srcCompat="@drawable/ic_discount" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".30">
+
+                <ImageView
+                    android:id="@+id/imageView_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.047"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.024"
+                    app:srcCompat="@drawable/ic_discount" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".70"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_discountTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/discounts_total" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight=".70"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView_discountTotal"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_cart_products"
+                android:layout_width="match_parent"
+                android:layout_height="503dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/continue_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/discounts_total" />
+                android:backgroundTint="#FECB67"
+                android:text="@string/button_continue" />
+
         </LinearLayout>
 
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/listView_cart_products"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/continue_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:listitem="@layout/layout_shopping_cart_list_item">
-
-    </ListView>
-
-    <Button
-        android:id="@+id/continue_button"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="24dp"
-        android:background="#FECB67"
-        android:text="@string/button_continue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/totalTextView"
-        app:layout_constraintStart_toEndOf="@+id/cantidadProd" />
-
-    <TextView
-        android:id="@+id/cantidadProd"
-        android:layout_width="47dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="#FECB67"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="N"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/totalTextView"
-        android:layout_width="94dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="#FECB67"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="Total"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

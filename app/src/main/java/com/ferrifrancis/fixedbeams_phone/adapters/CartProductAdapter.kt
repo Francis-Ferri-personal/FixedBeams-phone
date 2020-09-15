@@ -1,61 +1,69 @@
-package com.ferrifrancis.fixedbeams_phone.adapters
-
-import android.app.Activity
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
+import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import kotlinx.android.synthetic.main.layout_shopping_cart_list_item.view.*
-import kotlin.collections.hashMapOf
-
-class CartProductAdapter (private val context: Activity, private val products: ArrayList<ProductModelClass>): BaseAdapter(){
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-        val inflater = context.layoutInflater
-        val rowView = inflater.inflate(R.layout.layout_shopping_cart_list_item, null, true)
-        val textViewProductName = rowView.findViewById<TextView>(R.id.textView_productName)
-        val textViewProductPrice = rowView.findViewById<TextView>(R.id.textView_price)
-        val textViewCantidad = rowView.findViewById<TextView>(R.id.textView_quantity)
-        val textViewDiscount = rowView.findViewById<TextView>(R.id.textView_discount)
-
-        textViewProductName.text = "${products[position].name}"
-        textViewProductPrice.text = "$ ${products[position].price}"
-        textViewDiscount.text = "Discount: 0%"
-        //textViewCantidad.text = "${products[position].}"
-
-        addButtonListeners(rowView)
 
 
-        return rowView
+class CartProductAdapter(
+    val products: ArrayList<ProductModelClass>
+): RecyclerView.Adapter<CartProductAdapter.ViewHolder>(){
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): CartProductAdapter.ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_shopping_cart_list_item, parent, false)
+        return ViewHolder(v)
     }
 
-    fun addButtonListeners(itemView: View){
-        var tempCounter = itemView.textView_quantity.text.toString().toInt()
-        itemView.plus_button.setOnClickListener {
-            tempCounter += 1
-            itemView.textView_quantity.text = tempCounter.toString()
-        }
-        itemView.minus_button.setOnClickListener {
-            tempCounter -= 1
-            itemView.textView_quantity.text = tempCounter.toString()
-        }
+    override fun onBindViewHolder(holder: CartProductAdapter.ViewHolder, position: Int) {
+        holder.bindItems(products[position])
     }
 
-    override fun getItem(position: Int): Any {
-        return products.get(position)
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return products.size
     }
 
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        fun bindItems(product: ProductModelClass){
+            val textViewProductName = itemView.findViewById<TextView>(R.id.textView_productName)
+            val textViewProductPrice = itemView.findViewById<TextView>(R.id.textView_price)
+            val textViewDiscount = itemView.findViewById<TextView>(R.id.textView_discount)
+            val imageViewProduct = itemView.findViewById<ImageView>(R.id.imageViewProductImage)
+            val textViewQuantity = itemView.findViewById<TextView>(R.id.textView_quantity)
+
+            Glide.with(itemView).load(product.srcImage)
+                .centerInside()
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(imageViewProduct)
+
+            textViewProductName.text = "${product.name}"
+            textViewProductPrice.text = "$ ${product.price}"
+            textViewQuantity.text = product.quantity.toString()
+            textViewDiscount.text = "Discount: 0%"
+
+        }
+        fun addButtonListeners(itemView: View, product: ProductModelClass){
+            var tempCounter = itemView.findViewById<TextView>(R.id.textView_quantity).text.toString().toInt()
+            itemView.plus_button.setOnClickListener {
+                tempCounter += 1
+                itemView.textView_quantity.text = tempCounter.toString()
+                product.quantity = tempCounter
+                SharedPreferencesManager.saveProduct(product, itemView.context, "CarritoAdaptador")
+            }
+            itemView.minus_button.setOnClickListener {
+                tempCounter -= 1
+                itemView.textView_quantity.text = tempCounter.toString()
+                product.quantity = tempCounter
+                SharedPreferencesManager.saveProduct(product, itemView.context, "CarritoAdaptador")
+            }
+        }
+    }
 }
