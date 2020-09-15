@@ -64,6 +64,16 @@ class SharedPreferencesManager {
             }
         }
 
+        fun returnProductsTotal(context: Context): Map<String, Any> {
+            var productosArrayList = readSavedProducts(context)
+            var cantidadProductosTotal = productosArrayList.size
+            var costoProductosTotal = 0.0
+            for(producto in productosArrayList){
+                costoProductosTotal+= producto.price * producto.quantity!!
+            }
+            return mapOf("Cantidad" to cantidadProductosTotal, "Costo" to costoProductosTotal)
+        }
+
         fun saveArrayList(list: ArrayList<ProductModelClass>, context: Context) {
             initPrefFile(context)
             val editor = sharedPreferences.edit()
