@@ -12,6 +12,9 @@ const val DOMAIN_CATEGORIES = "${DOMAIN}/categories"
 const val USER = "user"
 const val USER_LOGIN = "${USER}/login"
 const val USER_SING_IN = "${USER}/sign-in"
+const val CATEGORY = "category"
+const val CATEGORY_PRODUCTS = "${CATEGORY}/products"
+
 
 // Permissions MAP
 const val CODE_MAP_PERMISSION = 100

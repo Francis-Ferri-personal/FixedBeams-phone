@@ -37,10 +37,7 @@ class CategoriesFragment : Fragment() {
         arguments?.let {
             idDomain = it.getInt(ID_DOMAIN)
         }
-        if (Network.networkExists(
-                context as AppCompatActivity
-            )
-        ){
+        if (Network.networkExists( context as AppCompatActivity)){
             if(idDomain != -1){
                 requestHttpCategories(idDomain)
             }

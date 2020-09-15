@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, SearchDialog.SearchDialogListener {
 
     val fragmentManager: FragmentManager = supportFragmentManager
+    lateinit var fragmentTransaction: FragmentTransaction
     private lateinit var sharedPreferences : SharedPreferences
 
     lateinit var buttonActualMenu: ImageButton;
@@ -48,7 +49,6 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         textView_money.text = "$ " + String.format("%.2f", money)
 
         if (!srcImage.equals("default")){
-            Toast.makeText(this, "ENTRASTE" + srcImage,Toast.LENGTH_LONG).show()
             loadProfileImage()
         }
         // Cargar las categorias iniciales
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
     }
 
     fun createCategoryFragment(idDomain: Int, replace: Boolean){
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction = fragmentManager.beginTransaction()
         val categoryFragment = CategoriesFragment.newInstance(idDomain)
         if (replace){
             while(fragmentManager.backStackEntryCount > 0) { fragmentManager.popBackStackImmediate()}
@@ -115,17 +115,14 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
     override fun getCategorySelected(idCategory: Int) {
         super.getCategorySelected(idCategory)
         Toast.makeText(this, idCategory.toString(), Toast.LENGTH_LONG).show()
-        // TODO:
-        //createProductFragment(idCategory)
+        createProductFragment(idCategory)
     }
 
     fun createProductFragment(idCategory: Int){
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-
-        // TODO: Change to a new one
-        val productFragment = CategoriesFragment.newInstance(idCategory)
-        fragmentTransaction.replace(container.id, productFragment)
+        fragmentTransaction = fragmentManager.beginTransaction()
+        val productFragment = ProductsFragment.newInstance(idCategory)
         fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.replace(container.id, productFragment)
         fragmentTransaction.commit()
     }
 

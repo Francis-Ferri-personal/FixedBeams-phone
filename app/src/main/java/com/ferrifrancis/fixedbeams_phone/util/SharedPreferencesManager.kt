@@ -11,7 +11,6 @@ import com.ferrifrancis.fixedbeams_phone.common.LOGIN_KEY
 import com.ferrifrancis.fixedbeams_phone.common.PASSWORD_KEY
 import com.ferrifrancis.fixedbeams_phone.common.PRODUCTS_KEY
 import com.ferrifrancis.fixedbeams_phone.common.SECRET_SHARED_FILENAME
-import com.ferrifrancis.fixedbeams_phone.data.ProductModelClass
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
@@ -45,7 +44,15 @@ class SharedPreferencesManager{
             )
         }
 
-        fun readSavedProducts(context: Context): ArrayList<ProductModelClass> {
+        fun clear(context: Context){
+            initPrefFile(context)
+            var editor = sharedPreferences.edit().clear().commit()
+        }
+    }
+
+}
+/*
+fun readSavedProducts(context: Context): ArrayList<ProductModelClass> {
             initPrefFile(context)
             val listaSerializada = Gson() // Serializar tipo JSON
             val contenidoJSON = sharedPreferences.getString(PRODUCTS_KEY, null)
@@ -92,10 +99,4 @@ class SharedPreferencesManager{
             saveArrayList(productosArrayList,context)
         }
 
-        fun clear(context: Context){
-            initPrefFile(context)
-            var editor = sharedPreferences.edit().clear().commit()
-        }
-    }
-
-}
+* */
