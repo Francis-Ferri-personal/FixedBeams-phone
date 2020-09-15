@@ -23,7 +23,7 @@ class ProductAdapter(private val context: Fragment, private val products: ArrayL
         val productTextViewName = row.findViewById<TextView>(R.id.textView_productName)
         productTextViewName.text = "${products[position].name}".capitalize()
         val productTextViewDescription = row.findViewById<TextView>(R.id.textView_productDescription)
-        productTextViewDescription.text = products[position].summary.substring(0,80)
+        productTextViewDescription.text = products[position].summary.substring(0,50)
         val productTextViewPrice = row.findViewById<TextView>(R.id.textView_productPrice)
         productTextViewPrice.text = "$ " + String.format("%.2f", products[position].price)
         return row

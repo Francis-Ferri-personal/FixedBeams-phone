@@ -19,7 +19,7 @@ import com.ferrifrancis.fixedbeams_phone.*
 import com.ferrifrancis.fixedbeams_phone.dialogs.SearchDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, SearchDialog.SearchDialogListener {
+class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, SearchDialog.SearchDialogListener, ProductsFragment.ProductListener {
 
     val fragmentManager: FragmentManager = supportFragmentManager
     lateinit var fragmentTransaction: FragmentTransaction
@@ -114,7 +114,6 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
 
     override fun getCategorySelected(idCategory: Int) {
         super.getCategorySelected(idCategory)
-        Toast.makeText(this, idCategory.toString(), Toast.LENGTH_LONG).show()
         createProductFragment(idCategory)
     }
 
@@ -126,19 +125,23 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         fragmentTransaction.commit()
     }
 
-    /*
-    override fun getProductSelected(idProduct: String) {
+
+    override fun getProductSelected(idProduct: Int) {
         super.getProductSelected(idProduct)
-        Toast.makeText(this, idProduct, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, idProduct.toString(), Toast.LENGTH_LONG).show()
     }
 
-     */
 
+    /*
     override fun getProductName(productName: String) {
         super.getProductName(productName)
         Toast.makeText(this, productName, Toast.LENGTH_LONG).show()
         // TODO: Send to PProduct Activity
     }
+
+     */
+
+
     fun goToShoppingCartActivity(){
         val explicitIntent = Intent(this,
             ShoppingCartActivity::class.java)

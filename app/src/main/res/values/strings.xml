@@ -76,4 +76,5 @@ Cuenta con velocidad variable que permite controlar los cortes por minuto, para 
     <string name="textView_money">money</string>
     <string name="editText_userName">User name</string>
     <string name="checkBox_keepOpen">Keep open</string>
+    <string name="textView_stock">Stock</string>
 </resources>

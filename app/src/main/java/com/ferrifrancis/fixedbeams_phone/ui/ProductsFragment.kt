@@ -1,5 +1,6 @@
 package com.ferrifrancis.fixedbeams_phone.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ import com.ferrifrancis.fixedbeams_phone.services.Network
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_categories.*
 import kotlinx.android.synthetic.main.fragment_products.*
+import kotlinx.android.synthetic.main.fragment_products.view.*
 
 private const val ID_CATEGORY = "idCategory"
 
@@ -52,9 +54,22 @@ class ProductsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_products, container, false)
+        var view =  inflater.inflate(R.layout.fragment_products, container, false)
+        view.listView.setOnItemClickListener { parent, view, position, id ->
+
+            listener.getProductSelected(products[position].id)
+        }
+        return view
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            listener = context as ProductListener
+        } catch (e: java.lang.ClassCastException){
+            throw ClassCastException(context.toString() + "Please, implement the interface")
+        }
+    }
 
     interface ProductListener{
         fun getProductSelected(idProduct: Int){}
