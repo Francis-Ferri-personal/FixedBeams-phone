@@ -10,19 +10,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.ferrifrancis.fixedbeams_phone.*
-import com.ferrifrancis.fixedbeams_phone.adapters.CategoryAdapter
-import com.ferrifrancis.fixedbeams_phone.data.category.CategoriesListClass
 import com.ferrifrancis.fixedbeams_phone.data.user.UserModelClass
-import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_categories.*
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
@@ -36,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         readDataEncryptedPreferencesFile()
 
         textView_singUp.setOnClickListener {
-            startActivity(Intent(this, RegistroActivity::class.java))
+            startActivity(Intent(this, SingInActivity::class.java))
             finish()
         }
 
@@ -46,7 +40,6 @@ class LoginActivity : AppCompatActivity() {
             if(emailPasswordValidation(email, password)){
                 requestHttpLogin(email, password)
             }
-            // TODO: showAlert()
         }
     }
 
@@ -73,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun requestHttpLogin(email: String, password: String){
-        val url: String = "$URL_BACKEND/$USER_LOGIN"
+        val url = "$URL_BACKEND/$USER_LOGIN"
         val dataJSON = JSONObject("{\"email\": \"${email}\", \"password\": \"${password}\"}")
         val queue= Volley.newRequestQueue(this)
         val request = JsonObjectRequest(url, dataJSON, Response.Listener<JSONObject> {
@@ -84,6 +77,9 @@ class LoginActivity : AppCompatActivity() {
                 if(user.id == 0){
                     showAlertUserNotFound()
                 } else {
+                    if (user.srcImage.isNullOrBlank()){
+                        user.srcImage = "default"
+                    }
                     saveSharedPreferences(user)
                     goToMainActivity(user)
                 }
@@ -122,26 +118,37 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveSharedPreferences(user: UserModelClass){
-        if(checkBox_rememberMe.isChecked){
+        if(checkBox_keepOpen.isChecked){
             sharedPreferences.edit()
                 .putInt(ID, user.id)
                 .putString(USER_NAME, user.userName)
                 .putFloat(MONEY, user.money.toFloat())
                 .putString(SRC_IMAGE, user.srcImage)
+                .apply()
+        } else {
+            cleanDataUser()
+        }
+        if(checkBox_rememberMe.isChecked){
+            sharedPreferences.edit()
                 .putString(EMAIL, editText_usernameEmail.text.toString())
                 .putString(PASSWORD, editTextPasswordSigIn.text.toString())
                 .apply()
-        } else {
-            cleanUserDataLogin()
+        } else{
+            cleanLoginData()
         }
     }
 
-    private fun cleanUserDataLogin(){
+    private fun cleanDataUser(){
         sharedPreferences.edit()
             .putInt(ID, 0)
             .putString(USER_NAME, "")
             .putFloat(MONEY, 0F)
             .putString(SRC_IMAGE, "")
+            .apply()
+    }
+
+    private fun cleanLoginData(){
+        sharedPreferences.edit()
             .putString(EMAIL, "")
             .putString(PASSWORD, "")
             .apply()

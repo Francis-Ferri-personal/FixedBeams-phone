@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RegistroActivity">
+    tools:context=".ui.SingInActivity">
 
     <TextView
         android:id="@+id/textViewIniciarSesion"
@@ -43,20 +43,20 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNameUser"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_firstName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextNameUser"
+        app:layout_constraintTop_toTopOf="@+id/editText_userName"
         app:srcCompat="@drawable/ic_userlogin" />
 
     <EditText
-        android:id="@+id/editTextNameUser"
+        android:id="@+id/editText_userName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/editTextNameUser"
+        android:hint="@string/editText_userName"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewUser"
@@ -68,11 +68,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/editTextMail"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNameUser"
-        app:layout_constraintStart_toStartOf="@+id/editTextNameUser"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNameUser" />
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editText_userName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText_userName"
+        app:layout_constraintTop_toBottomOf="@+id/editText_firstName" />
 
     <EditText
         android:id="@+id/editTextPasswordRegister"
@@ -80,9 +81,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="@string/editTextPassword"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/editTextMail"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextMail"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
 
@@ -131,6 +133,7 @@
         android:hint="@string/editTextPasswordConfirm"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/editTextPasswordRegister"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextPasswordRegister"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordRegister" />
 
@@ -168,6 +171,31 @@
         app:layout_constraintHorizontal_bias="0.815"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:srcCompat="@drawable/ic_truck" />
+
+    <EditText
+        android:id="@+id/editText_firstName"
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Firstname"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/editText_lastName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editText_userName"
+        app:layout_constraintTop_toBottomOf="@+id/editText_userName" />
+
+    <EditText
+        android:id="@+id/editText_lastName"
+        android:layout_width="136dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Lastname"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editText_userName"
+        app:layout_constraintTop_toBottomOf="@+id/editText_userName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@
             android:value="AIzaSyBdFYl667hg8vmsnqQg8DCzddZ6sLKV3VE" />
         <activity android:name=".ui.PagosActivity" />
         <activity android:name=".ui.ProductsActivity" />
-        <activity android:name=".ui.RegistroActivity" />
+        <activity android:name=".ui.SingInActivity" />
         <activity android:name=".ui.ShoppingCartActivity" />
         <activity android:name=".ui.LoginActivity" />
     </application>

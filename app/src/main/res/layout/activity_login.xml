@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RegistroActivity">
+    tools:context=".ui.SingInActivity">
 
     <TextView
         android:id="@+id/textView_singUp"
@@ -42,7 +42,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNameUser"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_userName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_usernameEmail"
         app:layout_constraintVertical_bias="0.0"
@@ -90,12 +90,13 @@
         app:srcCompat="@drawable/ic_passwordlogin" />
 
     <CheckBox
-        android:id="@+id/checkBox_rememberMe"
+        android:id="@+id/checkBox_keepOpen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="@string/checkBoxRecordarme"
+        android:checked="true"
+        android:text="@string/checkBox_keepOpen"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPassword" />
@@ -133,5 +134,16 @@
         app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:srcCompat="@drawable/ic_truck" />
+
+    <CheckBox
+        android:id="@+id/checkBox_rememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:checked="true"
+        android:text="@string/checkBoxRecordarme"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox_keepOpen"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_keepOpen"
+        app:layout_constraintTop_toTopOf="@+id/checkBox_keepOpen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

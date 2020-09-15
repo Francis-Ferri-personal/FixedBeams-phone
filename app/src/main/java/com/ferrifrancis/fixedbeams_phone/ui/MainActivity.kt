@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
     var idUser: Int = 0
     var userName: String ="Default"
     var money: Double = 0.0
-    var srcImage: String = ""
+    var srcImage: String? = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
         textView_userName.text = userName
         textView_money.text = "$ " + String.format("%.2f", money)
 
-        if (!srcImage.isNullOrEmpty()){
-            //Glide.with(this).load(srcImage).into(imageButton_user)
+        if (!srcImage.equals("default")){
+            Toast.makeText(this, "ENTRASTE" + srcImage,Toast.LENGTH_LONG).show()
             loadProfileImage()
         }
         // Cargar las categorias iniciales
