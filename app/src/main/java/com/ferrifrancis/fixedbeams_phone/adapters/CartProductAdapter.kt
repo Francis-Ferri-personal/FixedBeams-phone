@@ -1,8 +1,11 @@
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -35,7 +38,6 @@ class CartProductAdapter(
         fun bindItems(product: ProductModelClass){
             val textViewProductName = itemView.findViewById<TextView>(R.id.textView_productName)
             val textViewProductPrice = itemView.findViewById<TextView>(R.id.textView_price)
-            val textViewDiscount = itemView.findViewById<TextView>(R.id.textView_discount)
             val imageViewProduct = itemView.findViewById<ImageView>(R.id.imageViewProductImage)
             val textViewQuantity = itemView.findViewById<TextView>(R.id.textView_quantity)
 
@@ -45,13 +47,10 @@ class CartProductAdapter(
                 .into(imageViewProduct)
 
             textViewProductName.text = "${product.name}"
-            textViewProductPrice.text = "$ ${product.price}"
+            textViewProductPrice.text = "Price (c/u): $ ${product.price}"
             textViewQuantity.text = product.quantity.toString()
-            textViewDiscount.text = "Discount: 0%"
-
             addButtonListeners(itemView,product)
             removeButtonListeners(itemView,product)
-
         }
         fun addButtonListeners(itemView: View, product: ProductModelClass){
             var tempCounter = itemView.findViewById<TextView>(R.id.textView_quantity).text.toString().toInt()

@@ -92,6 +92,23 @@ class SharedPreferencesManager {
             editor.apply()
         }
 
+        fun deleteProduct(deleteProduct: ProductModelClass, context: Context){
+            var productosArrayList = readSavedProducts(context)
+            var existe = false
+            for (producto in productosArrayList) {
+                if (producto.id == deleteProduct.id) {
+                    existe = true
+                    break
+                }
+            }
+
+            if (existe) {
+                productosArrayList.remove(deleteProduct)
+            }
+
+            saveArrayList(productosArrayList, context)
+        }
+
         fun saveProduct(nuevoProducto: ProductModelClass, context: Context, origen: String) {
             var productosArrayList = readSavedProducts(context)
             var existe = false

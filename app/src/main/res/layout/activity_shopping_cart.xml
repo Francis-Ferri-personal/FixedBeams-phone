@@ -35,7 +35,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.024"
-                    app:srcCompat="@drawable/ic_discount" />
+                    app:srcCompat="@drawable/ic_carrito" />
             </LinearLayout>
 
             <LinearLayout
@@ -48,9 +48,12 @@
                     android:id="@+id/textView_discountTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/discounts_total" />
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="50dp"
+                    android:text="@string/discounts_total"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -74,10 +77,18 @@
 
                 <Button
                     android:id="@+id/continue_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="213dp"
+                    android:layout_height="54dp"
                     android:backgroundTint="#FECB67"
                     android:text="@string/button_continue" />
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    android:layout_width="213dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FECB67"
+                    android:text="@string/button_cancel" />
 
             </LinearLayout>
         </LinearLayout>

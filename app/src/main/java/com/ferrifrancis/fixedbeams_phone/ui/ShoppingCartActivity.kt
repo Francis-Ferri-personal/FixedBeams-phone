@@ -24,6 +24,9 @@ class ShoppingCartActivity : AppCompatActivity() {
         continue_button.setOnClickListener {
             goToPagosActivity()
         }
+        cancel_button.setOnClickListener {
+            this.finish()
+        }
     }
     fun obtainProducts(){
         products = SharedPreferencesManager.readSavedProducts(this)
