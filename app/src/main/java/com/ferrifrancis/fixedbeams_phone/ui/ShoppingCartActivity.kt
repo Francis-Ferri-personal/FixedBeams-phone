@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.BaseAdapter
 import com.ferrifrancis.fixedbeams_phone.R
+import com.ferrifrancis.fixedbeams_phone.adapters.CartProductAdapter
+import com.ferrifrancis.fixedbeams_phone.adapters.ProductAdapter
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import kotlinx.android.synthetic.main.activity_products.*
@@ -15,7 +17,7 @@ import kotlin.collections.ArrayList
 
 class ShoppingCartActivity : AppCompatActivity() {
     var products = arrayListOf<ProductModelClass>()
-    lateinit var adaptador : CartProductAdapter
+   // lateinit var adaptador : CartProductAdapter
 
     var cantidadesArray = hashMapOf<View, Int>()
     var rowViews = ArrayList<View>()
@@ -33,40 +35,8 @@ class ShoppingCartActivity : AppCompatActivity() {
         println("------------------")
     }
     fun obtainProducts(){
-        /*products.add(
-            ProductModelClass(
-                1,
-                "Producto 1",
-                "Detalle 1",
-                20.00
-            )
-        )
-        products.add(
-            ProductModelClass(
-                2,
-                "Producto 2",
-                "Detalle 2",
-                20.00
-            )
-        )
-        products.add(
-            ProductModelClass(
-                3,
-                "Producto 3",
-                "Detalle 3",
-                20.00
-            )
-        )
-        adaptador = CartProductAdapter(
-            this,
-            products,
-            cantidadesArray,
-            rowViews
-        )
-        cantidadesArray  = adaptador.getCantidades()
-        listView_cart_products.adapter = adaptador
-        )*/
-        //products = SharedPreferencesManager.readSavedProducts(this)
+
+        products = SharedPreferencesManager.readSavedProducts(this)
 
         listView_cart_products.adapter =
             CartProductAdapter(
@@ -86,7 +56,7 @@ class ShoppingCartActivity : AppCompatActivity() {
         var total = 0.0
         var i = 0
         products.forEach{
-            total += it.productPrice * cantidadesArray.get(rowViews.get(i))!!
+        //    total += it.productPrice * cantidadesArray.get(rowViews.get(i))!!
             i += 1
         }
         totalTextView.text = total.toString()

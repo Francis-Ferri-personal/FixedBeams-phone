@@ -22,7 +22,6 @@ import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailsActivity: AppCompatActivity() {
 
@@ -46,13 +45,14 @@ class DetailsActivity: AppCompatActivity() {
         val request = StringRequest(Request.Method.GET, url, Response.Listener<String>{
                 response ->
             try {
-                val product = Gson().fromJson(response, ProductModelClass::class.java)
+                product = Gson().fromJson(response, ProductModelClass::class.java)
                 setFields(product)
                 addButtonListeners()
             } catch (e: Exception){
                 Log.d("Error", e.toString())
             }
         }, Response.ErrorListener { error ->  Log.d("Error", error.toString()) })
+
         queue.add(request)
     }
 
@@ -62,7 +62,7 @@ class DetailsActivity: AppCompatActivity() {
         val textViewDetalle = findViewById<TextView>(R.id.detallesTextView)
         val textViewDescripcion = findViewById<TextView>(R.id.descriptionTextView)
         val textViewCantidad = findViewById<TextView>(R.id.cantidadTextView)
-        val buttonAddProduct = findViewById<Button>(R.id.button)
+        val buttonAddProduct = findViewById<Button>(R.id.addCartButton)
         val imageViewProduct = findViewById<ImageView>(R.id.imageView)
 
         Glide.with(this).load(product.srcImage)
@@ -93,10 +93,10 @@ class DetailsActivity: AppCompatActivity() {
             tempCounter -= 1
             cantidadTextView.text = tempCounter.toString()
         }
-        button.setOnClickListener {
+        addCartButton.setOnClickListener {
             var arrayList: ArrayList<ProductModelClass> =
                 SharedPreferencesManager.readSavedProducts(it.context)
-            product.stock = tempCounter
+            product.stock -= tempCounter
             SharedPreferencesManager.saveProduct(product, this, "Activity")
             Toast.makeText(this, "Producto agregado", Toast.LENGTH_LONG).show()
             finish()
