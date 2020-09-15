@@ -1,4 +1,4 @@
-package com.ferrifrancis.fixedbeams_phone.ui
+package com.ferrifrancis.fixedbeams_phone.controllers
 
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +22,6 @@ import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailsActivity : AppCompatActivity() {
 

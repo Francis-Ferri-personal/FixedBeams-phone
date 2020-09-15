@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loading_background"
-    tools:context=".ui.LoadingActivity" >
+    tools:context=".controllers.LoadingActivity" >
 
     <ImageView
         android:id="@+id/imageView2"

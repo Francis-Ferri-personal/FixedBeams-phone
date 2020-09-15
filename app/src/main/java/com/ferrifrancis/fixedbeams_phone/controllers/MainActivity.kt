@@ -1,4 +1,4 @@
-package com.ferrifrancis.fixedbeams_phone.ui
+package com.ferrifrancis.fixedbeams_phone.controllers
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
@@ -19,7 +18,6 @@ import com.ferrifrancis.fixedbeams_phone.*
 import com.ferrifrancis.fixedbeams_phone.dialogs.SearchDialog
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_shopping_cart_list_item.*
 
 class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, SearchDialog.SearchDialogListener, ProductsFragment.ProductListener {
 

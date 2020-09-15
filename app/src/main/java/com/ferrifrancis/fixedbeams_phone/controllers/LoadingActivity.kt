@@ -1,4 +1,4 @@
-package com.ferrifrancis.fixedbeams_phone.ui
+package com.ferrifrancis.fixedbeams_phone.controllers
 
 import android.app.AlertDialog
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.ferrifrancis.fixedbeams_phone.ui
+package com.ferrifrancis.fixedbeams_phone.controllers
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,16 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import androidx.security.crypto.MasterKeys
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.ferrifrancis.fixedbeams_phone.*
-import com.ferrifrancis.fixedbeams_phone.common.SECRET_SHARED_FILENAME
 import com.ferrifrancis.fixedbeams_phone.data.user.UserModelClass
-import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager.Companion.sharedPreferences
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.json.JSONObject
 

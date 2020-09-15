@@ -1,4 +1,4 @@
-package com.ferrifrancis.fixedbeams_phone.ui
+package com.ferrifrancis.fixedbeams_phone.controllers
 
 import android.content.Context
 import android.os.Bundle
@@ -16,14 +16,11 @@ import com.android.volley.toolbox.Volley
 import com.ferrifrancis.fixedbeams_phone.CATEGORY_PRODUCTS
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.URL_BACKEND
-import com.ferrifrancis.fixedbeams_phone.adapters.CategoryAdapter
 import com.ferrifrancis.fixedbeams_phone.adapters.ProductAdapter
-import com.ferrifrancis.fixedbeams_phone.data.category.CategoriesListClass
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductsListClass
 import com.ferrifrancis.fixedbeams_phone.services.Network
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_categories.*
 import kotlinx.android.synthetic.main.fragment_products.*
 import kotlinx.android.synthetic.main.fragment_products.view.*
 
