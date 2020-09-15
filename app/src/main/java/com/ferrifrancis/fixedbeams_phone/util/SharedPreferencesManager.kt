@@ -69,7 +69,9 @@ class SharedPreferencesManager {
             var cantidadProductosTotal = productosArrayList.size
             var costoProductosTotal = 0.0
             for(producto in productosArrayList){
-                costoProductosTotal+= producto.price * producto.quantity!!
+                if(producto.quantity != null){
+                    costoProductosTotal+= producto.price * producto.quantity!!
+                }
             }
             return mapOf("Cantidad" to cantidadProductosTotal, "Costo" to costoProductosTotal)
         }

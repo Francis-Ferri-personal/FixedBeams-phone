@@ -91,7 +91,8 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
     fun updateCostSummaryBar(){
         var resumencosto = SharedPreferencesManager.returnProductsTotal(this)
         textView_ItemNumber.text = resumencosto["Cantidad"].toString()
-        textView_priceAccumulated.text = resumencosto["Costo"].toString()
+
+        textView_priceAccumulated.text = "$ " + resumencosto["Costo"].toString()
     }
 
     fun changeCategories(selectedButton: ImageButton){

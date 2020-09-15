@@ -68,13 +68,18 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <Button
-                android:id="@+id/continue_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FECB67"
-                android:text="@string/button_continue" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <Button
+                    android:id="@+id/continue_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FECB67"
+                    android:text="@string/button_continue" />
+
+            </LinearLayout>
         </LinearLayout>
 
 
