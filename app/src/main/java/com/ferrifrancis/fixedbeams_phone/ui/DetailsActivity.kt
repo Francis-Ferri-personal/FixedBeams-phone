@@ -62,7 +62,7 @@ class DetailsActivity : AppCompatActivity() {
         val textViewDetalle = findViewById<TextView>(R.id.detallesTextView)
         val textViewDescripcion = findViewById<TextView>(R.id.descriptionTextView)
         val textViewCantidad = findViewById<TextView>(R.id.cantidadTextView)
-        val buttonAddProduct = findViewById<Button>(R.id.button)
+        val buttonAddProduct = findViewById<Button>(R.id.addCartButton)
         val imageViewProduct = findViewById<ImageView>(R.id.imageView)
 
         Glide.with(this).load(product.srcImage)
@@ -93,7 +93,7 @@ class DetailsActivity : AppCompatActivity() {
             tempCounter -= 1
             cantidadTextView.text = tempCounter.toString()
         }
-        button.setOnClickListener {
+        addCartButton.setOnClickListener {
             var arrayList: ArrayList<ProductModelClass> =
                 SharedPreferencesManager.readSavedProducts(it.context)
             product.quantity = tempCounter

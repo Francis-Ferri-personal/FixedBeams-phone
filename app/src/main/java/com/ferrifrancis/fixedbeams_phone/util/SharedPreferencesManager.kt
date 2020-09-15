@@ -64,6 +64,13 @@ class SharedPreferencesManager {
             }
         }
 
+        fun deleteProduct(context: Context,producto: ProductModelClass,origen: String){
+            var productosArrayList = readSavedProducts(context)
+            productosArrayList.remove(producto)
+
+            saveArrayList(productosArrayList, context)
+        }
+
         fun returnProductsTotal(context: Context): Map<String, Any> {
             var productosArrayList = readSavedProducts(context)
             var cantidadProductosTotal = productosArrayList.size

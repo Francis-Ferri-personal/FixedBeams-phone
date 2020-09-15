@@ -117,16 +117,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--<Button
-                    android:id="@+id/remove_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:text="@string/button_delete"
-                    android:textSize="12sp"
+                <ImageView
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:tint="#FF0000"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_quantity" />-->
+                    app:layout_constraintTop_toBottomOf="@+id/plus_button"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

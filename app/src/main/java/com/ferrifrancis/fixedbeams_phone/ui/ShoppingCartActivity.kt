@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
 import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
-import kotlinx.android.synthetic.main.activity_products.*
 import kotlinx.android.synthetic.main.activity_shopping_cart.*
 
 class ShoppingCartActivity : AppCompatActivity() {
@@ -38,10 +37,30 @@ class ShoppingCartActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
+       /* listView_cart_products.adapter =
+            CartProductAdapter(
+                this,
+                products
+            )*/
     }
     fun goToPagosActivity(){
         val intentExplicito = Intent(this,
             PagosActivity::class.java)
         startActivity(intentExplicito)
     }
+
+    override fun onResume() {
+        super.onResume()
+        /*cantidadProd.text = products.size.toString()
+        var total = 0.0
+        var i = 0
+        products.forEach{
+        //    total += it.productPrice * cantidadesArray.get(rowViews.get(i))!!
+            i += 1
+        }
+        totalTextView.text = total.toString()*/
+
+        
+    }
+
 }

@@ -50,6 +50,7 @@ class CartProductAdapter(
             textViewProductPrice.text = "Price (c/u): $ ${product.price}"
             textViewQuantity.text = product.quantity.toString()
             addButtonListeners(itemView,product)
+            removeButtonListeners(itemView,product)
         }
         fun addButtonListeners(itemView: View, product: ProductModelClass){
             var tempCounter = itemView.findViewById<TextView>(R.id.textView_quantity).text.toString().toInt()
@@ -64,6 +65,13 @@ class CartProductAdapter(
                 itemView.textView_quantity.text = tempCounter.toString()
                 product.quantity = tempCounter
                 SharedPreferencesManager.saveProduct(product, itemView.context, "CarritoAdaptador")
+            }
+        }
+        fun removeButtonListeners(itemView: View,product: ProductModelClass){
+            itemView.deleteButton.setOnClickListener{
+                itemView.textView_quantity.text = 0.toString()
+                product.quantity = 0
+                SharedPreferencesManager.deleteProduct( itemView.context,product,"Carrito")
             }
         }
     }
