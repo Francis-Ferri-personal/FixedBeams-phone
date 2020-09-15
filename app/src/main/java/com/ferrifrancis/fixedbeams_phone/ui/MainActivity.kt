@@ -128,7 +128,10 @@ class MainActivity : AppCompatActivity(), CategoriesFragment.CategoryListener, S
 
     override fun getProductSelected(idProduct: Int) {
         super.getProductSelected(idProduct)
-        Toast.makeText(this, idProduct.toString(), Toast.LENGTH_LONG).show()
+        val intentToDetail = Intent(this, DetailsActivity::class.java)
+        intentToDetail.putExtra(ID_PRODUCT, idProduct)
+        startActivity(intentToDetail)
+        //finish()
     }
 
 

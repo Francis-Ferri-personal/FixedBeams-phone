@@ -14,6 +14,7 @@ const val USER_LOGIN = "${USER}/login"
 const val USER_SING_IN = "${USER}/sign-in"
 const val CATEGORY = "category"
 const val CATEGORY_PRODUCTS = "${CATEGORY}/products"
+const val PRODUCT = "product"
 
 
 // Permissions MAP
@@ -33,3 +34,6 @@ const val SRC_IMAGE = "srcImage"
 // User login
 const val EMAIL = "email"
 const val PASSWORD = "password"
+
+// Product identifier
+const val ID_PRODUCT = "idProduct"

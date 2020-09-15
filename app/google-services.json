@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "845771951288",
-    "firebase_url": "https://fixedbeams-phone-8dbac.firebaseio.com",
-    "project_id": "fixedbeams-phone-8dbac",
-    "storage_bucket": "fixedbeams-phone-8dbac.appspot.com"
+    "project_number": "472686273134",
+    "firebase_url": "https://fixedbeams.firebaseio.com",
+    "project_id": "fixedbeams",
+    "storage_bucket": "fixedbeams.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:845771951288:android:da6132de293e1f5119f84d",
+        "mobilesdk_app_id": "1:472686273134:android:f0c5450a7abfa4baa8bc7f",
         "android_client_info": {
           "package_name": "com.ferrifrancis.fixedbeams_phone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "845771951288-r29t2ujfqv6l2fur455a9k6gqv033aou.apps.googleusercontent.com",
+          "client_id": "472686273134-ibpms23e9icj9d4bmrol8vm7jguj9iho.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDNucohdmppCMIzDmLdNnDme7Uf7FY9DIE"
+          "current_key": "AIzaSyCL7Vb_JSXRCQd8HS1Oqe5kIlOR2XcEbbI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "845771951288-r29t2ujfqv6l2fur455a9k6gqv033aou.apps.googleusercontent.com",
+              "client_id": "472686273134-ibpms23e9icj9d4bmrol8vm7jguj9iho.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
