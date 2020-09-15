@@ -19,7 +19,9 @@ import com.ferrifrancis.fixedbeams_phone.R
 import com.ferrifrancis.fixedbeams_phone.URL_BACKEND
 import com.ferrifrancis.fixedbeams_phone.common.DETAIL_MAX_CHARS
 import com.ferrifrancis.fixedbeams_phone.data.product.ProductModelClass
+import com.ferrifrancis.fixedbeams_phone.util.SharedPreferencesManager
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class DetailsActivity: AppCompatActivity() {
@@ -46,6 +48,7 @@ class DetailsActivity: AppCompatActivity() {
             try {
                 val product = Gson().fromJson(response, ProductModelClass::class.java)
                 setFields(product)
+                addButtonListeners()
             } catch (e: Exception){
                 Log.d("Error", e.toString())
             }
@@ -78,9 +81,26 @@ class DetailsActivity: AppCompatActivity() {
         textViewPrice.text = "$" + product.price.toString()
         textViewCantidad.text = product.stock!!.toString()
 
+    }
 
-
-
+    fun addButtonListeners() {
+        var tempCounter = cantidadTextView.text.toString().toInt()
+        imageButton.setOnClickListener {
+            tempCounter += 1
+            cantidadTextView.text = tempCounter.toString()
+        }
+        imageButton2.setOnClickListener {
+            tempCounter -= 1
+            cantidadTextView.text = tempCounter.toString()
+        }
+        button.setOnClickListener {
+            var arrayList: ArrayList<ProductModelClass> =
+                SharedPreferencesManager.readSavedProducts(it.context)
+            product.stock = tempCounter
+            SharedPreferencesManager.saveProduct(product, this, "Activity")
+            Toast.makeText(this, "Producto agregado", Toast.LENGTH_LONG).show()
+            finish()
+        }
     }
 }
 
